@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide Provider;
 import 'package:uwifi_map_services_acp/providers/customer_pd_sd_provider.dart';
 import 'package:uwifi_map_services_acp/providers/customer_ssn_acp_provider.dart';
-// import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/final_popup_acp_not_found.dart';
+import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/final_popup_acp_not_found.dart';
 import '../../../../providers/cart_controller.dart';
 import '../../../../providers/steps_controller.dart';
 import 'cart_buttons.dart';
@@ -107,13 +107,13 @@ void finalPressed(BuildContext context) async {
         // } catch (error) {
           // print("Error on Final Pressed: '$error'");
           // ignore: use_build_context_synchronously
-            // showDialog(
-            //   barrierColor: const Color(0x00022963).withOpacity(0.40),
-            //   barrierDismissible: false,
-            //   context: context,
-            //   builder: (_) {
-            //     return const FinalPopupACPNotFound();
-            //   },
-            // );
+            showDialog(
+              barrierColor: const Color(0x00022963).withOpacity(0.40),
+              barrierDismissible: false,
+              context: context,
+              builder: (_) {
+                return const FinalPopupACPNotFound();
+              },
+            );
         // }
   }

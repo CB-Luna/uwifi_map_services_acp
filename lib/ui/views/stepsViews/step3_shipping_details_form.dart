@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:uwifi_map_services_acp/providers/customer_shipping_controller.dart';
+import 'package:uwifi_map_services_acp/providers/customer_pd_sd_provider.dart';
 import 'package:uwifi_map_services_acp/providers/steps_controller.dart';
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
 import 'package:uwifi_map_services_acp/ui/inputs/custom_inputs.dart';
 
-class Step2ShippingDetailsForm extends StatefulWidget {
-  const Step2ShippingDetailsForm({Key? key}) : super(key: key);
+class Step3ShippingDetailsForm extends StatefulWidget {
+  const Step3ShippingDetailsForm({Key? key}) : super(key: key);
 
   @override
-  State<Step2ShippingDetailsForm> createState() => _Step2ShippingDetailsFormState();
+  State<Step3ShippingDetailsForm> createState() => _Step3ShippingDetailsFormState();
 }
 
-class _Step2ShippingDetailsFormState extends State<Step2ShippingDetailsForm> {
+class _Step3ShippingDetailsFormState extends State<Step3ShippingDetailsForm> {
   @override
   Widget build(BuildContext context) {
-    final controller = Provider.of<CustomerShippingInfo>(context);
-    final stepController = Provider.of<StepsController>(context);
+    final customerPDSDController = Provider.of<CustomerPDSDProvider>(context);
+    final stepsController = Provider.of<StepsController>(context);
     final validCharacters = RegExp(r'^[a-zA-Z\- ]+$');
     final phoneCharacters = RegExp(r'^[0-9\-() ]+$');
     final isMobile = MediaQuery.of(context).size.width < 1024 ? true : false;
@@ -63,7 +62,7 @@ class _Step2ShippingDetailsFormState extends State<Step2ShippingDetailsForm> {
                           ),
                         ),
                         Text(
-                          'Step 2: Shipping Details',
+                          'Step 3: Shipping Details',
                           style: TextStyle(
                             color: colorInversePrimary,
                             fontSize: isMobile ? 14 : 18,
@@ -79,7 +78,7 @@ class _Step2ShippingDetailsFormState extends State<Step2ShippingDetailsForm> {
           ),
           Flexible(
             child: Form(
-              key: stepController.formKey,
+              key: stepsController.formKey,
                 child: Container(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
               child: Column(
@@ -92,7 +91,7 @@ class _Step2ShippingDetailsFormState extends State<Step2ShippingDetailsForm> {
                         Expanded(
                           child: TextFormField(
                             /// VARIABLE STORAGE
-                            controller: controller.parsedAddress1SD,
+                            controller: customerPDSDController.parsedAddress1SD,
       
                             ///VALIDATION TRIGGER
                             // initialValue: dir,
@@ -120,7 +119,7 @@ class _Step2ShippingDetailsFormState extends State<Step2ShippingDetailsForm> {
                         Expanded(
                           child: TextFormField(
                             /// VARIABLE STORAGE
-                            controller: controller.parsedAddress2SD,
+                            controller: customerPDSDController.parsedAddress2SD,
       
                             ///VALIDATION TRIGGER
                             // initialValue: dir,
@@ -140,7 +139,7 @@ class _Step2ShippingDetailsFormState extends State<Step2ShippingDetailsForm> {
                         Expanded(
                           child: TextFormField(
                             /// VARIABLE STORAGE
-                            controller: controller.parsedZipcodeSD,
+                            controller: customerPDSDController.parsedZipcodeSD,
       
                             ///VALIDATION TRIGGER
                             autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -174,7 +173,7 @@ class _Step2ShippingDetailsFormState extends State<Step2ShippingDetailsForm> {
                         Expanded(
                           child: TextFormField(
                             /// VARIABLE STORAGE
-                            controller: controller.parsedCitySD,
+                            controller: customerPDSDController.parsedCitySD,
       
                             ///VALIDATION TRIGGER
                             // initialValue: dir,
@@ -201,7 +200,7 @@ class _Step2ShippingDetailsFormState extends State<Step2ShippingDetailsForm> {
                         Expanded(
                           child: TextFormField(
                             /// VARIABLE STORAGE
-                            controller: controller.parsedStateSD,
+                            controller: customerPDSDController.parsedStateSD,
       
                             ///VALIDATION TRIGGER
                             // initialValue: dir,

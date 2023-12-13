@@ -5,8 +5,8 @@ import 'package:uwifi_map_services_acp/helpers/constants.dart';
 import 'package:uwifi_map_services_acp/helpers/globals.dart';
 import 'package:uwifi_map_services_acp/providers/cart_controller.dart';
 import 'package:url_strategy/url_strategy.dart';
-import 'package:uwifi_map_services_acp/providers/customer_info_controller.dart';
-import 'package:uwifi_map_services_acp/providers/customer_shipping_controller.dart';
+import 'package:uwifi_map_services_acp/providers/customer_pd_sd_provider.dart';
+import 'package:uwifi_map_services_acp/providers/customer_ssn_acp_provider.dart';
 import 'package:uwifi_map_services_acp/router/router.dart';
 import 'package:uwifi_map_services_acp/services/navigation_service.dart';
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
@@ -44,10 +44,11 @@ class AppState extends StatelessWidget {
         ),
         //Provider para carrito de compras
         ChangeNotifierProvider<Cart>(create: (_) => Cart()),
-        //Provider para customer y shipping
-        ChangeNotifierProvider(create: (_) => CustomerShippingInfo()),
-        ChangeNotifierProvider<CustomerInfoProvider>(
-          create: (_) => CustomerInfoProvider(
+        //Provider para customer Personal Details y Shipping Details
+        ChangeNotifierProvider(create: (_) => CustomerPDSDProvider()),
+        //Provider para customer SSN Y ACP
+        ChangeNotifierProvider<CustomerSSNACPProvider>(
+          create: (_) => CustomerSSNACPProvider(
           ),
         ),
       ],
@@ -62,7 +63,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'UWIFI Map Services',
+        title: 'UWIFI Map Services ACP',
         debugShowCheckedModeBanner: false,
         initialRoute: Flurorouter.rootRoute,
         onGenerateRoute: Flurorouter.router.generator,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:uwifi_map_services_acp/providers/customer_info_controller.dart';
-
+import 'package:uwifi_map_services_acp/providers/customer_ssn_acp_provider.dart';
 import 'package:uwifi_map_services_acp/providers/tracking_provider.dart' as track;
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/customer_info_checks.dart';
@@ -38,13 +37,13 @@ class SalesLayout extends StatelessWidget {
           ),
         ],
         builder: (context, child) {
-          final customerController = Provider.of<CustomerInfoProvider>(context);
+          final customerSSNACPController = Provider.of<CustomerSSNACPProvider>(context);
           final stepsController = Provider.of<StepsController>(context);
 
           return Scaffold(
             resizeToAvoidBottomInset: false,
             bottomNavigationBar: mobile(context)
-                ? NavigationMobile(customerController: customerController)
+                ? NavigationMobile(customerSSNACPController: customerSSNACPController)
                 : null,
             key: _scaffoldKey,
             backgroundColor: colorBgB,

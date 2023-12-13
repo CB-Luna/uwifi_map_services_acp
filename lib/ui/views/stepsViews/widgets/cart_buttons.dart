@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:uwifi_map_services_acp/providers/cart_controller.dart';
 import 'package:uwifi_map_services_acp/providers/tracking_provider.dart' as track;
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
-import '../../../../providers/customer_info_controller.dart';
 import '../../../../providers/steps_controller.dart';
 
 //Pendiente de separar los botones
@@ -34,8 +32,6 @@ class CartButtons extends StatelessWidget {
     final stepsController = Provider.of<StepsController>(context);
 
     final tracking = Provider.of<track.TrackingProvider>(context);
-    final cartController = Provider.of<Cart>(context);
-    final customer = Provider.of<CustomerInfoProvider>(context);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,

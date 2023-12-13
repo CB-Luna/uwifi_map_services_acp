@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
-import 'package:uwifi_map_services_acp/ui/views/stepsViews/step1_personal_details_form.dart';
-import 'package:uwifi_map_services_acp/ui/views/stepsViews/step3_billing_information.dart';
-import 'package:uwifi_map_services_acp/ui/views/stepsViews/step2_shipping_details_form.dart';
+import 'package:uwifi_map_services_acp/ui/views/stepsViews/step1_acp_ssn_form.dart';
+import 'package:uwifi_map_services_acp/ui/views/stepsViews/step2_personal_details_form.dart';
+import 'package:uwifi_map_services_acp/ui/views/stepsViews/step3_shipping_details_form.dart';
+import 'package:uwifi_map_services_acp/ui/views/stepsViews/what_is_acp.dart';
 
 import '../../../providers/steps_controller.dart';
 
@@ -92,15 +93,19 @@ class CustomerInfoViewState extends State<CustomerInfoView> {
                   SizedBox(
                     height: 10
                   ),
-                  Step1PersonalDetailsForm(),
+                  WhatIsACP(),
+                  SizedBox(
+                    height: 10
+                  ),
+                  Step1ACPSSNForm(),
                   SizedBox(
                     height: 10,
                   ),
-                  Step2ShippingDetailsForm(),
+                  Step2PersonalDetailsForm(),
                   SizedBox(
                     height: 10,
                   ),
-                  Step3BillingInformationForm(),
+                  Step3ShippingDetailsForm(),
                 ],
               ),
             ),
@@ -222,11 +227,13 @@ class _WebViewState extends State<_WebView> {
           child: const Column(
             children: [
               Center(),
-              Step1PersonalDetailsForm(),
+              WhatIsACP(),
               SizedBox(height: 10),
-              Step2ShippingDetailsForm(),
+              Step1ACPSSNForm(),
               SizedBox(height: 10),
-              Step3BillingInformationForm(),
+              Step2PersonalDetailsForm(),
+              SizedBox(height: 10),
+              Step3ShippingDetailsForm(),
             ],
           ),
         ));

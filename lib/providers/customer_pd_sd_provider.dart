@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:google_maps/google_maps.dart';
 
-class CustomerShippingInfo with ChangeNotifier {
+class CustomerPDSDProvider with ChangeNotifier {
   //Bandera Checkbox SD same as PD
   bool sameAsPD = true;
 
@@ -20,6 +20,7 @@ class CustomerShippingInfo with ChangeNotifier {
   final TextEditingController parsedZipcodePD = TextEditingController(text: "");
   final TextEditingController parsedCityPD = TextEditingController(text: "");
   final TextEditingController parsedStatePD = TextEditingController(text: "");
+  
 
   LatLng? locatizationPD;
   
@@ -38,10 +39,6 @@ class CustomerShippingInfo with ChangeNotifier {
 
   bool formValidationPD() {
     return (formKeyPD.currentState!.validate()) ? true : false;
-  }
-
-  bool formValidationCC() {
-    return (formKeyCC.currentState!.validate()) ? true : false;
   }
 
   void activeNotifyListeners() {
@@ -72,6 +69,7 @@ class CustomerShippingInfo with ChangeNotifier {
     }
     notifyListeners();
   }
+
 
   //controllers for the Card Info
   final TextEditingController parsedName = TextEditingController(text: "");

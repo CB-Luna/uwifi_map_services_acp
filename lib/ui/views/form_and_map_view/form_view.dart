@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:uwifi_map_services_acp/classes/home_page.dart';
 import 'package:uwifi_map_services_acp/data/constants.dart';
 import 'package:uwifi_map_services_acp/providers/cart_controller.dart';
-import 'package:uwifi_map_services_acp/providers/customer_shipping_controller.dart';
+import 'package:uwifi_map_services_acp/providers/customer_pd_sd_provider.dart';
 import 'package:uwifi_map_services_acp/providers/search_controller.dart';
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
 import 'package:uwifi_map_services_acp/ui/buttons/custom_outlined_button.dart';
@@ -31,7 +31,7 @@ class _FormViewState extends State<FormView> {
     // ignore: undefined_prefixed_name
 
     final tracking = Provider.of<TrackingProvider>(context);
-    final customerShippingInfoProvider = Provider.of<CustomerShippingInfo>(context);
+    final customerPDController = Provider.of<CustomerPDSDProvider>(context);
     final cartController = Provider.of<Cart>(context);
 
     return Builder(
@@ -246,25 +246,17 @@ class _FormViewState extends State<FormView> {
                                   controller.changeLocation(location.position);
                                 }
 
-                                customerShippingInfoProvider.parsedAddress1PD.text =
-                                    controller.street;
-                                customerShippingInfoProvider.parsedCityPD.text =
-                                    controller.city;
-                                customerShippingInfoProvider.parsedStatePD.text =
-                                    controller.state;
-                                customerShippingInfoProvider.parsedZipcodePD.text =
-                                    controller.zipcode;
-                                customerShippingInfoProvider.locatizationPD = 
+                                customerPDController.locatizationPD = 
                                     controller.currentLocation;
-                                customerShippingInfoProvider.parsedAddress1SD.text = 
+                                customerPDController.parsedAddress1SD.text = 
                                     controller.street;
-                                customerShippingInfoProvider.parsedZipcodeSD.text = 
+                                customerPDController.parsedZipcodeSD.text = 
                                     controller.zipcode;
-                                customerShippingInfoProvider.parsedCitySD.text = 
+                                customerPDController.parsedCitySD.text = 
                                     controller.city;
-                                customerShippingInfoProvider.parsedStateSD.text = 
+                                customerPDController.parsedStateSD.text = 
                                     controller.state;
-                                customerShippingInfoProvider.locatizationSD = 
+                                customerPDController.locatizationSD = 
                                     controller.currentLocation;
                                 tracking.setOrigin = controller.origin;
                                 

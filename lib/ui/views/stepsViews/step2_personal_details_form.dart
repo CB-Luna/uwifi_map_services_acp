@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:uwifi_map_services_acp/providers/customer_shipping_controller.dart';
+import 'package:uwifi_map_services_acp/providers/customer_pd_sd_provider.dart';
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
 import 'package:uwifi_map_services_acp/ui/inputs/custom_inputs.dart';
 
-class Step1PersonalDetailsForm extends StatefulWidget {
-  const Step1PersonalDetailsForm({Key? key})
+class Step2PersonalDetailsForm extends StatefulWidget {
+  const Step2PersonalDetailsForm({Key? key})
       : super(key: key);
 
   @override
-  State<Step1PersonalDetailsForm> createState() => _Step1PersonalDetailsFormState();
+  State<Step2PersonalDetailsForm> createState() => _Step2PersonalDetailsFormState();
 }
 
-class _Step1PersonalDetailsFormState extends State<Step1PersonalDetailsForm> {
+class _Step2PersonalDetailsFormState extends State<Step2PersonalDetailsForm> {
   TextEditingController number = TextEditingController(text:"");
   TextEditingController ccv = TextEditingController(text:"");
   TextEditingController date = TextEditingController(text:"");
@@ -22,7 +22,7 @@ class _Step1PersonalDetailsFormState extends State<Step1PersonalDetailsForm> {
   bool isCvvFocused = false;
   @override
   Widget build(BuildContext context) {
-    final controller = Provider.of<CustomerShippingInfo>(context);
+    final customerPDSDController = Provider.of<CustomerPDSDProvider>(context);
     final validCharacters = RegExp(r'^[a-zA-Z\- ]+$');
     final phoneCharacters = RegExp(r'^[0-9\-() ]+$');
     // final zcode = widget.zipcode.toString();
@@ -78,7 +78,7 @@ class _Step1PersonalDetailsFormState extends State<Step1PersonalDetailsForm> {
                               ),
                             ),
                             Text(
-                              'Step 1: Personal Details',
+                              'Step 2: Personal Details',
                               style: TextStyle(
                                 color: colorInversePrimary,
                                 fontSize: isMobile ? 14 : 18,
@@ -94,7 +94,7 @@ class _Step1PersonalDetailsFormState extends State<Step1PersonalDetailsForm> {
               ),
               Flexible(
                 child: Form(
-                    key: controller.formKeyPD,
+                    key: customerPDSDController.formKeyPD,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                           vertical: 10, horizontal: 30),
@@ -109,9 +109,9 @@ class _Step1PersonalDetailsFormState extends State<Step1PersonalDetailsForm> {
                                   Expanded(
                                     child: TextFormField(
                                       /// VARIABLE STORAGE
-                                      controller: controller.parsedFNamePD,
+                                      controller: customerPDSDController.parsedFNamePD,
                                       onChanged: (value) {
-                                        controller.activeNotifyListeners();
+                                        customerPDSDController.activeNotifyListeners();
                                       },
                                       ///VALIDATION TRIGGER
                                       autovalidateMode: AutovalidateMode
@@ -140,9 +140,9 @@ class _Step1PersonalDetailsFormState extends State<Step1PersonalDetailsForm> {
                                   Expanded(
                                     child: TextFormField(
                                       /// VARIABLE STORAGE
-                                      controller: controller.parsedLNamePD,
+                                      controller: customerPDSDController.parsedLNamePD,
                                       onChanged: (value) {
-                                        controller.activeNotifyListeners();
+                                        customerPDSDController.activeNotifyListeners();
                                       },
                                       ///VALIDATION TRIGGER
                                       autovalidateMode: AutovalidateMode
@@ -179,7 +179,7 @@ class _Step1PersonalDetailsFormState extends State<Step1PersonalDetailsForm> {
                                 Expanded(
                                   child: TextFormField(
                                     /// VARIABLE STORAGE
-                                    controller: controller.parsedPhonePD,
+                                    controller: customerPDSDController.parsedPhonePD,
 
                                     ///VALIDATION TRIGGER
                                     autovalidateMode:
@@ -212,7 +212,7 @@ class _Step1PersonalDetailsFormState extends State<Step1PersonalDetailsForm> {
                                 Expanded(
                                   child: TextFormField(
                                     /// VARIABLE STORAGE
-                                    controller: controller.parsedEmailPD,
+                                    controller: customerPDSDController.parsedEmailPD,
 
                                     ///VALIDATION TRIGGER
                                     autovalidateMode:

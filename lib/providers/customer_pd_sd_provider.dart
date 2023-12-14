@@ -1,10 +1,45 @@
 
 
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:google_maps/google_maps.dart';
+import 'package:uwifi_map_services_acp/helpers/globals.dart';
+import 'package:uwifi_map_services_acp/models/state.dart';
 
 class CustomerPDSDProvider with ChangeNotifier {
+  List<States> states = [];
+  Map<String, String> stateCodes = {};
+
+  CustomerPDSDProvider({bool notify = true}) {
+    getStates(notify: notify);
+  }
+
+  //Función para recuperar el código del catálogo de "state"
+  Future<void> getStates({bool notify = true}) async {
+    try {
+      states.clear();
+
+      final res = await supabase.from('state').select().order(
+            'code',
+            ascending: true,
+          );
+
+      states = (res as List<dynamic>).map((state) => States.fromJson(jsonEncode(state))).toList();
+
+      for (var state in states) {
+        final newState = <String, String>{state.code : state.name};
+        stateCodes.addAll(newState);
+      }
+
+      if (notify) notifyListeners();
+    } catch (e) {
+      log('Error en getStates() -$e');
+    }
+  }
+  
   //Bandera Checkbox SD same as PD
   bool sameAsPD = true;
 
@@ -34,6 +69,7 @@ class CustomerPDSDProvider with ChangeNotifier {
   final TextEditingController parsedZipcodeSD = TextEditingController(text: "");
   final TextEditingController parsedCitySD = TextEditingController(text: "");
   final TextEditingController parsedStateSD = TextEditingController(text: "");
+  final TextEditingController parsedStateCodeSD = TextEditingController(text: "");
 
   LatLng? locatizationSD;
 
@@ -45,31 +81,12 @@ class CustomerPDSDProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void changeValuesShippingDetails() {
-    sameAsPD = !sameAsPD;
-    if (sameAsPD) {
-      parsedFNameSD.text = parsedFNamePD.text;
-      parsedLNameSD.text = parsedLNamePD.text;
-      parsedPhoneSD.text = parsedPhonePD.text;
-      parsedAddress1SD.text = parsedAddress1PD.text;
-      parsedAddress2SD.text = parsedAddress2PD.text;
-      parsedZipcodeSD.text = parsedZipcodePD.text;
-      parsedCitySD.text = parsedCityPD.text;
-      parsedStateSD.text = parsedStatePD.text;
 
-    } else {
-      parsedFNameSD.text = "";
-      parsedLNameSD.text = "";
-      parsedPhoneSD.text = "";
-      parsedAddress1SD.text = "";
-      parsedAddress2SD.text = "";
-      parsedZipcodeSD.text = "";
-      parsedCitySD.text = "";
-      parsedStateSD.text = "";
-    }
+  void selectStateUpdateSD(String newState) {
+    parsedStateSD.text = newState; 
+    parsedStateCodeSD.text = stateCodes[newState] ?? "";
     notifyListeners();
   }
-
 
   //controllers for the Card Info
   final TextEditingController parsedName = TextEditingController(text: "");

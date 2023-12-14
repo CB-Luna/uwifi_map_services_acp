@@ -23,7 +23,7 @@ class _Step2PersonalDetailsFormState extends State<Step2PersonalDetailsForm> {
   @override
   Widget build(BuildContext context) {
     final customerPDSDController = Provider.of<CustomerPDSDProvider>(context);
-    final validCharacters = RegExp(r'^[a-zA-Z\- ]+$');
+   final nameCharacters = RegExp(r'^(([A-Z]{1}|[ÁÉÍÓÚÑ]{1})[a-zá-ÿ]+[ ]?)+$');
     final phoneCharacters = RegExp(r'^[0-9\-() ]+$');
     // final zcode = widget.zipcode.toString();
     var phoneFormat = MaskTextInputFormatter(
@@ -109,9 +109,9 @@ class _Step2PersonalDetailsFormState extends State<Step2PersonalDetailsForm> {
                                   Expanded(
                                     child: TextFormField(
                                       /// VARIABLE STORAGE
-                                      controller: customerPDSDController.parsedFNamePD,
+                                      controller:  customerPDSDController.parsedFNamePD,
                                       onChanged: (value) {
-                                        customerPDSDController.activeNotifyListeners();
+                                         customerPDSDController.activeNotifyListeners();
                                       },
                                       ///VALIDATION TRIGGER
                                       autovalidateMode: AutovalidateMode
@@ -126,10 +126,9 @@ class _Step2PersonalDetailsFormState extends State<Step2PersonalDetailsForm> {
                                               maxHeight: 55),
 
                                     validator: (value) {
-                                      return validCharacters
-                                              .hasMatch(value ?? '')
-                                          ? null
-                                          : 'Please enter your name';
+                                        return (nameCharacters.hasMatch(value ?? ''))
+                                        ? null
+                                        : 'Please enter your name, the name should be capitalized.';
                                     },
                                     style: const TextStyle(
                                       color: colorPrimaryDark,
@@ -140,9 +139,9 @@ class _Step2PersonalDetailsFormState extends State<Step2PersonalDetailsForm> {
                                   Expanded(
                                     child: TextFormField(
                                       /// VARIABLE STORAGE
-                                      controller: customerPDSDController.parsedLNamePD,
+                                      controller:  customerPDSDController.parsedLNamePD,
                                       onChanged: (value) {
-                                        customerPDSDController.activeNotifyListeners();
+                                         customerPDSDController.activeNotifyListeners();
                                       },
                                       ///VALIDATION TRIGGER
                                       autovalidateMode: AutovalidateMode
@@ -156,11 +155,10 @@ class _Step2PersonalDetailsFormState extends State<Step2PersonalDetailsForm> {
                                               icon: Icons.person_outlined,
                                               maxHeight: 55),
 
-                                    validator: (value) {
-                                      return validCharacters
-                                              .hasMatch(value ?? '')
-                                          ? null
-                                          : 'Please enter your name';
+                                     validator: (value) {
+                                        return (nameCharacters.hasMatch(value ?? ''))
+                                        ? null
+                                        : 'Please enter your last name, the last name should be capitalized.';
                                     },
                                     style: const TextStyle(
                                       color: colorPrimaryDark,

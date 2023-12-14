@@ -82,8 +82,8 @@ class _Step1ACPSSNFormState extends State<Step1ACPSSNForm> {
                                   ),
                                   Text(
                                     customerSSNACPController.acpNumberR ? 
-                                      'Step 1: ACP Number' : 
-                                      'Step 1: SSN',
+                                      'Step 1: SSN' :
+                                      'Step 1: ACP Number',
                                     style: TextStyle(
                                       color: colorInversePrimary,
                                       fontSize: isMobile ? 14 : 18,
@@ -138,8 +138,8 @@ class _Step1ACPSSNFormState extends State<Step1ACPSSNForm> {
                                           child: TextFormField(
                                             /// VARIABLE STORAGE
                                             controller: customerSSNACPController.acpNumberR ?
-                                            customerSSNACPController.acpNumber : 
-                                            customerSSNACPController.ssn4LD,
+                                            customerSSNACPController.ssn4LD :
+                                             customerSSNACPController.acpNumber,
                                             ///VALIDATION TRIGGER
                                             autovalidateMode: AutovalidateMode
                                                 .onUserInteraction,
@@ -149,24 +149,25 @@ class _Step1ACPSSNFormState extends State<Step1ACPSSNForm> {
                                             decoration: CustomInputs()
                                                 .formInputDecoration(
                                                     label: customerSSNACPController.acpNumberR ? 
-                                                    'Number*' : 
-                                                    '4 Last Digits*',
+                                                    '4 Last Digits*' :
+                                                    'Number*',
                                                     icon: Icons.numbers_outlined,
                                                     maxHeight: 55),
                                           inputFormatters: [
-                                            LengthLimitingTextInputFormatter(customerSSNACPController.acpNumberR ? 11 : 5),
-                                            customerSSNACPController.acpNumberR ? acpFormat : ssn4Format
+                                            LengthLimitingTextInputFormatter(customerSSNACPController.acpNumberR ? 5 : 11),
+                                            customerSSNACPController.acpNumberR ? ssn4Format : acpFormat
                                           ],
                                           validator: (value) {
                                             return customerSSNACPController.acpNumberR ? 
+                                              (ssn4Characters
+                                                    .hasMatch(value ?? '')
+                                                ? null
+                                                : 'Please enter your last 4 SSN digits')
+                                              :
                                               (acpCharacters
                                                     .hasMatch(value ?? '')
                                                 ? null
-                                                : 'Please enter your ACP number') :
-                                              ssn4Characters
-                                                    .hasMatch(value ?? '')
-                                                ? null
-                                                : 'Please enter your last 4 SSN digits';
+                                                : 'Please enter your ACP number');
                                           },
                                           style: const TextStyle(
                                             color: colorPrimaryDark,

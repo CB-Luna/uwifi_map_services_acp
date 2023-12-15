@@ -211,9 +211,13 @@ class _Step3ShippingDetailsFormState extends State<Step3ShippingDetailsForm> {
                         ),
                         Expanded(
                           child: CustomDropDown(
+                            validator: (value) {
+                              return (value == "" || value == null)
+                                ? 'Please select a state.'
+                                : null;
+                            },
                             maxHeight: 55,
                             icon: Icons.house_outlined,
-                            hint: "Select one",
                             label: 'State*',
                             width: double.infinity,
                             list: customerPDSDController.stateCodes.values.toList(),

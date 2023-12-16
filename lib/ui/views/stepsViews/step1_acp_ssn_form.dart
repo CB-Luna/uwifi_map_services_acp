@@ -41,7 +41,6 @@ class _Step1ACPSSNFormState extends State<Step1ACPSSNForm> {
       children: [
         Container(
               width: 1400,
-              height: 160,
               decoration: BoxDecoration(
                 color: colorInversePrimary,
                 boxShadow: const [
@@ -120,65 +119,63 @@ class _Step1ACPSSNFormState extends State<Step1ACPSSNForm> {
                         ),
                       ),
                     ),
-                    Flexible(
-                      child: Form(
-                          key: customerSSNACPController.formKeySSNACP,
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 30),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Expanded(
-                                          child: TextFormField(
-                                            /// VARIABLE STORAGE
-                                            controller: customerSSNACPController.acpNumberR ?
-                                            customerSSNACPController.ssn4LD :
-                                             customerSSNACPController.acpNumber,
-                                            ///VALIDATION TRIGGER
-                                            autovalidateMode: AutovalidateMode
-                                                .onUserInteraction,
-                                            autocorrect: false,
-                                            obscureText: false,
-                                            keyboardType: TextInputType.name,
-                                            decoration: CustomInputs()
-                                                .formInputDecoration(
-                                                    label: customerSSNACPController.acpNumberR ? 
-                                                    '4 Last Digits*' :
-                                                    'Number*',
-                                                    icon: Icons.numbers_outlined,
-                                                    maxHeight: 55),
-                                          inputFormatters: [
-                                            LengthLimitingTextInputFormatter(customerSSNACPController.acpNumberR ? 5 : 11),
-                                            customerSSNACPController.acpNumberR ? ssn4Format : acpFormat
-                                          ],
-                                          validator: (value) {
-                                            return customerSSNACPController.acpNumberR ? 
-                                              (ssn4Characters
-                                                    .hasMatch(value ?? '')
-                                                ? null
-                                                : 'Please enter your last 4 SSN digits')
-                                              :
-                                              (acpCharacters
-                                                    .hasMatch(value ?? '')
-                                                ? null
-                                                : 'Please enter your ACP number');
-                                          },
-                                          style: const TextStyle(
-                                            color: colorPrimaryDark,
-                                          ),
+                    Form(
+                        key: customerSSNACPController.formKeySSNACP,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 30),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Expanded(
+                                        child: TextFormField(
+                                          /// VARIABLE STORAGE
+                                          controller: customerSSNACPController.acpNumberR ?
+                                          customerSSNACPController.ssn4LD :
+                                           customerSSNACPController.acpNumber,
+                                          ///VALIDATION TRIGGER
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
+                                          autocorrect: false,
+                                          obscureText: false,
+                                          keyboardType: TextInputType.name,
+                                          decoration: CustomInputs()
+                                              .formInputDecoration(
+                                                  label: customerSSNACPController.acpNumberR ? 
+                                                  '4 Last Digits*' :
+                                                  'Number*',
+                                                  icon: Icons.numbers_outlined,
+                                                  maxHeight: 55),
+                                        inputFormatters: [
+                                          LengthLimitingTextInputFormatter(customerSSNACPController.acpNumberR ? 5 : 11),
+                                          customerSSNACPController.acpNumberR ? ssn4Format : acpFormat
+                                        ],
+                                        validator: (value) {
+                                          return customerSSNACPController.acpNumberR ? 
+                                            (ssn4Characters
+                                                  .hasMatch(value ?? '')
+                                              ? null
+                                              : 'Please enter your last 4 SSN digits')
+                                            :
+                                            (acpCharacters
+                                                  .hasMatch(value ?? '')
+                                              ? null
+                                              : 'Please enter your ACP number');
+                                        },
+                                        style: const TextStyle(
+                                          color: colorPrimaryDark,
                                         ),
-                                        ),
-                                    ],
-                                  ),
-                                ]),
-                          )),
-                    ),
+                                      ),
+                                      ),
+                                  ],
+                                ),
+                              ]),
+                        )),
                   ]),
             ),
       ],

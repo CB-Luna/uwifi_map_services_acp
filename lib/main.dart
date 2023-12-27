@@ -74,7 +74,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'UWIFI Map Services ACP',
+        title: 'U-wifi Map Services ACP',
         debugShowCheckedModeBanner: false,
         initialRoute: Flurorouter.rootRoute,
         onGenerateRoute: Flurorouter.router.generator,

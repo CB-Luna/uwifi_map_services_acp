@@ -94,12 +94,12 @@ class _Step1ACPSSNFormState extends State<Step1ACPSSNForm> {
                             ),
                             Flexible(
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Text(
                                     "I don't remember my ACP Number",
                                     style: GoogleFonts.workSans(
-                                    fontSize: isMobile ? 12 : 18,
+                                    fontSize: isMobile ? 10 : 16,
                                     color: colorInversePrimary,
                                     fontWeight: FontWeight.normal)),
                                   Checkbox(

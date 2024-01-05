@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
+import 'package:uwifi_map_services_acp/ui/views/stepsViews/full_form_widget.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/step1_acp_ssn_form.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/step2_personal_details_form.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/step3_shipping_details_form.dart';
@@ -93,19 +94,20 @@ class CustomerInfoViewState extends State<CustomerInfoView> {
                   SizedBox(
                     height: 10
                   ),
-                  WhatIsACP(),
-                  SizedBox(
-                    height: 10
-                  ),
-                  Step1ACPSSNForm(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Step2PersonalDetailsForm(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Step3ShippingDetailsForm(),
+                  FullFormWidget()
+                  // WhatIsACP(),
+                  // SizedBox(
+                  //   height: 10
+                  // ),
+                  // Step1ACPSSNForm(),
+                  // SizedBox(
+                  //   height: 10,
+                  // ),
+                  // Step2PersonalDetailsForm(),
+                  // SizedBox(
+                  //   height: 10,
+                  // ),
+                  // Step3ShippingDetailsForm(),
                 ],
               ),
             ),
@@ -226,14 +228,14 @@ class _WebViewState extends State<_WebView> {
           padding: const EdgeInsets.fromLTRB(50, 10, 50, 0),
           child: const Column(
             children: [
-              Center(),
-              WhatIsACP(),
-              SizedBox(height: 10),
-              Step1ACPSSNForm(),
-              SizedBox(height: 10),
-              Step2PersonalDetailsForm(),
-              SizedBox(height: 10),
-              Step3ShippingDetailsForm(),
+              FullFormWidget()
+              // WhatIsACP(),
+              // SizedBox(height: 10),
+              // Step1ACPSSNForm(),
+              // SizedBox(height: 10),
+              // Step2PersonalDetailsForm(),
+              // SizedBox(height: 10),
+              // Step3ShippingDetailsForm(),
             ],
           ),
         ));

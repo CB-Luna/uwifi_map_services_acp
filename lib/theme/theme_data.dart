@@ -17,9 +17,9 @@ const bodyFont = "Plus Jakarta Sans";
 
 //General Colors
 const colorPrimary = Color(0xFF7949DC);
-const colorPrimaryLight = Color(0xFFBB6BD9);
+const colorPrimaryLight = Color(0xFF8A5DD8);
 const colorPrimaryShade = Color(0xFF7D47DD);
-const colorPrimaryDark = Color(0xFF5243C2);
+const colorPrimaryDark = Color(0xFF492C7C);
 const colorPrimaryContainerLight = Color(0xFFEDF6FF);
 const colorPrimaryContainer = Color(0xFFDFECF9);
 

@@ -40,6 +40,7 @@ class PromoCheckboxState extends State<PromoCheckbox> {
                   width: 2.0
                 ),
                 value: emailCheckbox,
+                checkColor: colorBgWhite,
                 onChanged: (emailyes) {
                   setState(() {
                     emailCheckbox = emailyes!;
@@ -65,6 +66,7 @@ class PromoCheckboxState extends State<PromoCheckbox> {
                   width: 2.0
                 ),
                 value: smsCheckbox,
+                checkColor: colorBgWhite,
                 onChanged: (smsyes) {
                   setState(() {
                     smsCheckbox = smsyes!;

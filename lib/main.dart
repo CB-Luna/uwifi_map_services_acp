@@ -7,6 +7,8 @@ import 'package:uwifi_map_services_acp/helpers/constants.dart';
 import 'package:uwifi_map_services_acp/helpers/globals.dart';
 import 'package:uwifi_map_services_acp/providers/cart_controller.dart';
 import 'package:url_strategy/url_strategy.dart';
+import 'package:uwifi_map_services_acp/providers/customer_info_controller.dart';
+import 'package:uwifi_map_services_acp/providers/customer_pd_sd_cc_provider.dart';
 import 'package:uwifi_map_services_acp/providers/customer_pd_sd_provider.dart';
 import 'package:uwifi_map_services_acp/providers/customer_ssn_acp_provider.dart';
 import 'package:uwifi_map_services_acp/providers/remote/suggestions_api.dart';
@@ -57,9 +59,24 @@ class AppState extends StatelessWidget {
               UniqueKey(),
               notify: false),
         ),
+        ChangeNotifierProvider<CustomerPDSDCCProvider>(
+          create: (_) => CustomerPDSDCCProvider(
+              SuggestionsRepositoryImpl(
+                SuggestionsAPI(Dio()),
+              ),
+              SuggestionsRepositoryImpl(
+                SuggestionsAPI(Dio()),
+              ),
+              UniqueKey(),
+              notify: false),
+        ),
         //Provider para customer SSN Y ACP
         ChangeNotifierProvider<CustomerSSNACPProvider>(
           create: (_) => CustomerSSNACPProvider(
+          ),
+        ),
+        ChangeNotifierProvider<CustomerInfoProvider>(
+          create: (_) => CustomerInfoProvider(
           ),
         ),
       ],

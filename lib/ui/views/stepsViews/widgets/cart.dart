@@ -29,7 +29,7 @@ class CartWidget extends StatelessWidget {
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 500),
               curve: Curves.easeInOut,
-              width: cartWidth,
+              width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.5,
               decoration: BoxDecoration(boxShadow: const [
                 BoxShadow(

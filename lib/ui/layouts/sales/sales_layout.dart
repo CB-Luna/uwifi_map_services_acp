@@ -5,6 +5,7 @@ import 'package:uwifi_map_services_acp/providers/tracking_provider.dart' as trac
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/customer_info_checks.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/cart.dart';
+import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/header_cart_section_widget.dart';
 
 import '../../../data/constants.dart';
 import '../../../providers/remote/boxes_behavior_controller.dart';
@@ -50,7 +51,7 @@ class SalesLayout extends StatelessWidget {
             body: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                TopBar(),
+                const TopBar(),
                 Expanded(
                   child: Row(
                     //Con este parámatro se ajusta la posición del Shopping Cart
@@ -62,36 +63,16 @@ class SalesLayout extends StatelessWidget {
                           .changeStep(stepsController.currentStep)),
 
                     //Despliegue de Shopping Cart
-                    if (!mobile(context)) Column(
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: CartWidget(),
-                        ),
-                        //CheckBoxes
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            width: cartWidth,
-                            height: MediaQuery.of(context).size.height * 0.35,
-                            decoration: BoxDecoration(
-                              color: colorInversePrimary,
-                              boxShadow: const [
-                                BoxShadow(
-                                  blurRadius: 15,
-                                  spreadRadius: -5,
-                                  color: colorBgB,
-                                  offset: Offset(0, 15),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(40),
-                            ),
-                            child:SingleChildScrollView(
-                              controller: ScrollController(),
-                              child: const PromoCheckbox()),
+                    if (!mobile(context)) Flexible(
+                      child: Column(
+                        children: [
+                          HeaderCartSectionWidget(),
+                          const Padding(
+                            padding: EdgeInsets.all(16.0),
+                            child: CartWidget(),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     )
                   ]),
                 )

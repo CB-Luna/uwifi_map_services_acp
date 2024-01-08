@@ -31,55 +31,37 @@ class CartWidget extends StatelessWidget {
               curve: Curves.easeInOut,
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.5,
-              decoration: BoxDecoration(boxShadow: const [
-                BoxShadow(
-                  blurRadius: 15,
-                  spreadRadius: -5,
-                  color: colorBgBlack,
-                  offset: Offset(0, 15),
-                )
-              ], color: colorInversePrimary, borderRadius: BorderRadius.circular(50)),
+              decoration: ShapeDecoration(
+                color: colorBgWhite,
+                shape: RoundedRectangleBorder(
+                  side: const BorderSide(width: 1.5, color: colorInversePrimary),
+                  borderRadius: BorderRadius.circular(13.53),
+                ),
+              ),
               child: Consumer<Cart>(
                 builder: (BuildContext context, Cart cart, Widget? child) {
                   return Column(children: <Widget>[
-                    Container(
-                        decoration: const BoxDecoration(
-                            color: colorPrimary,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(50.0),
-                                topRight: Radius.circular(50.0))),
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 15.0, horizontal: 25),
-                        width: MediaQuery.of(context).size.width,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            ClayContainer(
-                              spread: 3,
-                              color: colorInversePrimary,
-                              parentColor: colorPrimary,
-                              height: 35,
-                              width: 35,
-                              depth: 30,
-                              borderRadius: 25,
-                              curveType: CurveType.concave,
-                              child: IconButton(
-                                icon: const Icon(
-                                  Icons.keyboard_tab_rounded,
-                                  color: colorPrimary,
-                                  size: 18,
-                                ),
-                                onPressed: () {
-                                  cartBehavior.changeCartVisibility();
-                                },
-                              ),
-                            ),
-                            Text("Your plan details",
-                                style: h2Style(context,
-                                    color: colorInversePrimary, fontSize: 18)),
-                            const SizedBox(width: 30),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                      child: Container(
+                        width: 750.0,
+                        height: 100.0,
+                        decoration: ShapeDecoration(
+                          color: colorPrimary,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14.88),
+                          ),
+                          shadows: const [
+                            BoxShadow(
+                              color: colorBoxShadow,
+                              blurRadius: 3.97,
+                              offset: Offset(0, 0.99),
+                              spreadRadius: 0,
+                            )
                           ],
-                        )),
+                        ),
+                      ),
+                    ),
                     Expanded(
                         child: Scrollbar(
                       controller: scrollController,

@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uwifi_map_services_acp/providers/customer_ssn_acp_provider.dart';
-import 'package:uwifi_map_services_acp/providers/tracking_provider.dart' as track;
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
-import 'package:uwifi_map_services_acp/ui/views/stepsViews/customer_info_checks.dart';
-import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/cart.dart';
-import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/extras_section_widget.dart';
-import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/header_cart_section_widget.dart';
 
 import '../../../data/constants.dart';
 import '../../../providers/remote/boxes_behavior_controller.dart';
@@ -25,9 +20,6 @@ class SalesLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // String? custAddress = "${customerInfo.street}, ${customerInfo.city} ${customerInfo.state} ${customerInfo.zipcode}";
-
-
     return MultiProvider(
         providers: [
           ChangeNotifierProvider<StepsController>(
@@ -54,34 +46,8 @@ class SalesLayout extends StatelessWidget {
               children: [
                 const TopBar(),
                 Expanded(
-                  child: Row(
-                    //Con este parámatro se ajusta la posición del Shopping Cart
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                    //Despliegue de contenido de página en Stepper
-                    Flexible(
-                        child: stepsController
-                          .changeStep(stepsController.currentStep)),
-
-                    //Despliegue de Shopping Cart
-                    if (!mobile(context)) const Flexible(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: ExtrasSection(),
-                            ),
-                            HeaderCartSectionWidget(),
-                            Padding(
-                              padding: EdgeInsets.all(16.0),
-                              child: CartWidget(),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
-                  ]),
+                  child: stepsController
+                    .changeStep(stepsController.currentStep),
                 )
               ],
             ),

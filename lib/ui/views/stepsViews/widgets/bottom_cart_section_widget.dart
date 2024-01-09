@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
-import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/buttons/cart_buttons_views.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/buttons/custom_outlined_button.dart';
+import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/cart_buttons_views.dart';
 
 class BottomCartSectionWidget extends StatelessWidget {
   const BottomCartSectionWidget({
@@ -36,45 +36,45 @@ class BottomCartSectionWidget extends StatelessWidget {
                   Row(
                     children: [
                       SizedBox(
-                        width: 180,
-                        height: 50,
+                        width: 120,
+                        height: 35,
                         child: TextFormField(
+                          cursorColor: colorBorder,
                             // validator: (value) {
                             // },
                             decoration: InputDecoration(
                               labelText: 'Coupon Code',
-                              labelStyle: TextStyle(
-                                  color: Color(0xFF8D8D8D),
-                                  fontSize: 16,
-                                  fontFamily: 'Lexend',
-                                  fontWeight: FontWeight.w400,
-                                  height: 0.09,
-                                ),
-                              hintText: 'Coupon Code...',
-                              hintStyle: TextStyle(
-                                  color: Color(0xFF8D8D8D),
-                                  fontSize: 16,
-                                  fontFamily: 'Lexend',
-                                  fontWeight: FontWeight.w400,
-                                  height: 0.09,
+                              labelStyle: const TextStyle(
+                                  color: colorBorder,
+                                  fontSize: 14,
+                                  fontFamily: 'Quicksand',
+                                  fontWeight: FontWeight.w600,
                                 ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8.0),
+                                borderSide: const BorderSide(
+                                  color: colorBgWhite
+                                ),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8.0),
+                                borderSide: const BorderSide(
+                                  color: colorBgWhite
+                                ),
                               ),
                               filled: true,
                               fillColor: colorBgWhite,
                             ),
-                            style: TextStyle(
-                              color: colorPrimary,
-                              fontSize: 16,
-                              fontFamily: 'Lexend',
-                              fontWeight: FontWeight.w400,
-                              height: 0.09,
+                            style: const TextStyle(
+                              color: colorBorder,
+                              fontSize: 14,
+                              fontFamily: 'Quicksand',
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
+                      ),
+                      const SizedBox(
+                        width: 10,
                       ),
                       const SizedBox(
                         width: 125,

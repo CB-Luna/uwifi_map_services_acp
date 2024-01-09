@@ -12,7 +12,7 @@ import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/bottom_cart_s
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/column_builder.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/selector_count_item_widget.dart';
 import '../../../../providers/remote/boxes_behavior_controller.dart';
-import 'buttons/cart_buttons_views.dart';
+import 'cart_buttons_views.dart';
 
 class CartWidget extends StatelessWidget {
   const CartWidget({Key? key}) : super(key: key);

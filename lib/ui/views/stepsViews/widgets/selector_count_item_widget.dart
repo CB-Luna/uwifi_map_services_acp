@@ -93,18 +93,21 @@ class SelectorCountItemWidget extends StatelessWidget {
                 ),
               ),
             ),
-            CustomizableCounter(
-              count: counter,
-              incrementIcon: Icon(
-                Icons.add,
-                color: isRequired ? colorInversePrimary : colorBgBlack,
+            AbsorbPointer(
+              absorbing: isRequired,
+              child: CustomizableCounter(
+                count: counter,
+                incrementIcon: Icon(
+                  Icons.add,
+                  color: isRequired ? colorInversePrimary : colorBgBlack,
+                ),
+                decrementIcon: Icon(
+                  Icons.remove,
+                  color: isRequired ? colorInversePrimary : colorBgBlack,
+                ),
+                textColor: isRequired ? colorInversePrimary : colorBgBlack,
+                showButtonText: false,
               ),
-              decrementIcon: Icon(
-                Icons.remove,
-                color: isRequired ? colorInversePrimary : colorBgBlack,
-              ),
-              textColor: isRequired ? colorInversePrimary : colorBgBlack,
-              showButtonText: false,
             ),
             Text(
               '\$$price',
@@ -117,14 +120,17 @@ class SelectorCountItemWidget extends StatelessWidget {
                 height: 0,
               ),
             ),
-            InkWell(
-              child: Icon(
-                Icons.delete_outline,
-                color: isRequired ? colorInversePrimary : colorBgBlack,
+            Visibility(
+              visible: !isRequired,
+              child: InkWell(
+                child: Icon(
+                  Icons.delete_outline,
+                  color: isRequired ? colorInversePrimary : colorBgBlack,
+                ),
+                onTap: () {
+                  
+                },
               ),
-              onTap: () {
-                
-              },
             )
           ],
         ),

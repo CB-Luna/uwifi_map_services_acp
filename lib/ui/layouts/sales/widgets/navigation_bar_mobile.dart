@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/cart_buttons_views.dart';
 
 import '../../../../providers/customer_ssn_acp_provider.dart';
-import '../../../views/stepsViews/widgets/buttons/cart_buttons_views.dart';
 
 class NavigationMobile extends StatelessWidget {
   const NavigationMobile({

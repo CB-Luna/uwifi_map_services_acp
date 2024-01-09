@@ -55,7 +55,6 @@ class SalesLayout extends StatelessWidget {
                 Expanded(
                   child: Row(
                     //Con este parámatro se ajusta la posición del Shopping Cart
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                     //Despliegue de contenido de página en Stepper
                     Flexible(

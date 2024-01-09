@@ -86,9 +86,9 @@ class _Step4PaymentDetailsFormState extends State<Step4PaymentDetailsForm> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  'Same as Shipping Address',
+                  'Same Billing and Shipping Address',
                   style: GoogleFonts.workSans(
-                  fontSize: isMobile ? 12 : 18,
+                  fontSize: isMobile ? 12 : 16,
                   color: colorInversePrimary,
                   fontWeight: FontWeight.normal)),
                 Checkbox(

@@ -46,6 +46,9 @@ class CustomInputs {
             fontWeight: FontWeight.w500,
             height: 0.08,
           ),
+        errorStyle: const TextStyle(
+            color: colorBgWhite,
+          ),
         constraints: BoxConstraints(maxHeight: maxHeight, maxWidth: maxWidth));
   }
 

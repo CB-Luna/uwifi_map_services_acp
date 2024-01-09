@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:restart_app/restart_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';

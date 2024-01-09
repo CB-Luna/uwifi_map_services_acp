@@ -5,6 +5,7 @@ import 'package:uwifi_map_services_acp/providers/tracking_provider.dart' as trac
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/customer_info_checks.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/cart.dart';
+import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/extras_section_widget.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/header_cart_section_widget.dart';
 
 import '../../../data/constants.dart';
@@ -64,14 +65,20 @@ class SalesLayout extends StatelessWidget {
 
                     //Despliegue de Shopping Cart
                     if (!mobile(context)) const Flexible(
-                      child: Column(
-                        children: [
-                          HeaderCartSectionWidget(),
-                          Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: CartWidget(),
-                          ),
-                        ],
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: ExtrasSection(),
+                            ),
+                            HeaderCartSectionWidget(),
+                            Padding(
+                              padding: EdgeInsets.all(16.0),
+                              child: CartWidget(),
+                            ),
+                          ],
+                        ),
                       ),
                     )
                   ]),

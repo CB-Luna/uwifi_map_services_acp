@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 //Backgrounds
 const colorBgLight = Color(0xFFEBF3FC);
-const colorBgW = Color(0xFFD8E4F4);
+const colorBgW = Color(0xFFF4F4F4);
 const colorBgWhite = Color(0xFFFFFFFF);
 
 const colorBgDark = Color(0xFF140D03);
@@ -34,8 +34,8 @@ const colorTertiaryDark = Color(0xff47B489);
 
 const colorInversePrimary = Color(0xFFFFFFFF);
 
-//Button Decoration Colors
-const colorBtnBorder = Color.fromRGBO(255, 255, 255, 0.459);
+//Decoration Colors
+const colorBorder = Color(0xFF8D8D8D);
 const colorBtnTxt = Color(0xADC39292);
 const colorBtnTxtLight = Color(0xC8ECE7E7);
 

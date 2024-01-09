@@ -37,10 +37,10 @@ class TopBar extends StatelessWidget {
         BoxShadow(
           blurRadius: 15,
           spreadRadius: -5,
-          color: colorBgB,
+          color: colorBgWhite,
           offset: Offset(0, 5),
         )
-      ], color: colorBgBlack),
+      ], color: colorBgW),
       padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,7 +51,7 @@ class TopBar extends StatelessWidget {
           StepperWidget(
             width: 50,
             curStep: stepsController.currentStep.index,
-            activeColor: colorsTheme(context).primary),
+            activeColor: colorPrimary),
           const Spacer()
         ],
       ),

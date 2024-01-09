@@ -56,30 +56,6 @@ class _Step4PaymentDetailsFormState extends State<Step4PaymentDetailsForm> {
                   ],
                 ),
               ),
-              Flexible(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Same as Shipping Address',
-                      style: GoogleFonts.workSans(
-                      fontSize: isMobile ? 12 : 18,
-                      color: colorInversePrimary,
-                      fontWeight: FontWeight.normal)),
-                    Checkbox(
-                      side: const BorderSide(
-                        color: colorBgWhite,
-                        width: 2.0
-                      ),
-                      activeColor: colorBgWhite,
-                      value: customerPDSDCCController.sameAsSD,
-                      onChanged: (bool? value) {
-                        customerPDSDCCController.changeValuesBillingDetails();
-                      },
-                    ),
-                  ],
-                ),
-              ),
             ],
           ),
         ),
@@ -101,6 +77,33 @@ class _Step4PaymentDetailsFormState extends State<Step4PaymentDetailsForm> {
                 child: CustomFormCreditCard()
               ),
             ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Flexible(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  'Same as Shipping Address',
+                  style: GoogleFonts.workSans(
+                  fontSize: isMobile ? 12 : 18,
+                  color: colorInversePrimary,
+                  fontWeight: FontWeight.normal)),
+                Checkbox(
+                  side: const BorderSide(
+                    color: colorBgWhite,
+                    width: 2.0
+                  ),
+                  activeColor: colorBgWhite,
+                  value: customerPDSDCCController.sameAsSD,
+                  onChanged: (bool? value) {
+                    customerPDSDCCController.changeValuesBillingDetails();
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ],

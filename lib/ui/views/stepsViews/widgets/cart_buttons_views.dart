@@ -23,7 +23,7 @@ styledButton(context) {
       return CartButtons(
           opacity: opacity,
           isVisible: true,
-          buttonText: "Check for Services",
+          buttonText: "Checkout | \$547.00",
           function: () {
             bool boolSSNACP = customerSSNACPController.formValidationSSNACP();
             bool boolPD = customerPDSDController.formValidationPD();

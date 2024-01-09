@@ -8,14 +8,14 @@ class HeaderCartSectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: EdgeInsets.all(16.0),
+    return Padding(padding: const EdgeInsets.all(16.0),
     child: Container(
         width: MediaQuery.of(context).size.width,
         height: 50,
         padding: const EdgeInsets.only(bottom: 5),
         decoration: const BoxDecoration(
             border: Border(
-                bottom: BorderSide(width: 2, color: colorInversePrimary),
+                bottom: BorderSide(width: 2, color: colorBorder),
             ),
         ),
         child: const Row(
@@ -26,7 +26,7 @@ class HeaderCartSectionWidget extends StatelessWidget {
                 Text(
                     'Cart Summary',
                     style: TextStyle(
-                        color: colorInversePrimary,
+                        color: colorBgDark,
                         fontSize: 26.99,
                         fontFamily: 'Quicksand',
                         fontWeight: FontWeight.w600,

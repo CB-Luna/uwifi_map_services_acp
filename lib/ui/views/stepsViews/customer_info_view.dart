@@ -23,7 +23,8 @@ class CustomerInfoView extends StatefulWidget {
       required this.street,
       required this.city,
       required this.state,
-      required this.zipcode})
+      required this.zipcode
+      })
       : super(key: key);
 
   @override
@@ -82,7 +83,7 @@ class CustomerInfoViewState extends State<CustomerInfoView> {
     var stepsController = Provider.of<StepsController>(context, listen: false);
     // final customerInfo = Provider.of<CustomerInfoProvider>(context);
     return Scaffold(
-      backgroundColor: colorBgB,
+      backgroundColor: colorBgWhite,
       body: (MediaQuery.of(context).size.width > 1130)
           ? const _WebView()
           :

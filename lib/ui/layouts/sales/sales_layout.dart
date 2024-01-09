@@ -47,7 +47,7 @@ class SalesLayout extends StatelessWidget {
                 ? NavigationMobile(customerSSNACPController: customerSSNACPController)
                 : null,
             key: _scaffoldKey,
-            backgroundColor: colorBgB,
+            backgroundColor: colorBgWhite,
             body: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -63,11 +63,11 @@ class SalesLayout extends StatelessWidget {
                           .changeStep(stepsController.currentStep)),
 
                     //Despliegue de Shopping Cart
-                    if (!mobile(context)) Flexible(
+                    if (!mobile(context)) const Flexible(
                       child: Column(
                         children: [
                           HeaderCartSectionWidget(),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.all(16.0),
                             child: CartWidget(),
                           ),

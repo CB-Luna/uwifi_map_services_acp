@@ -99,7 +99,7 @@ class CartButtons extends StatelessWidget {
                   stepsController.validateStep(cartContains, context),
                   if (function != null) function!()
                 },
-                child: Text("Next: $buttonText",
+                child: Text(buttonText,
                     style: GoogleFonts.workSans(
                         height: 1.5,
                         fontSize: 14,

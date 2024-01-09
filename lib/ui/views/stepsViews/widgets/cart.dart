@@ -7,7 +7,10 @@ import 'package:provider/provider.dart';
 import 'package:uwifi_map_services_acp/data/constants.dart';
 import 'package:uwifi_map_services_acp/providers/cart_controller.dart';
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
+import 'package:uwifi_map_services_acp/ui/inputs/custom_inputs.dart';
+import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/bottom_cart_section_widget.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/column_builder.dart';
+import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/selector_count_item_widget.dart';
 import '../../../../providers/remote/boxes_behavior_controller.dart';
 import 'cart_buttons_views.dart';
 
@@ -18,7 +21,7 @@ class CartWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final cartController = Provider.of<Cart>(context);
     final cartBehavior = Provider.of<BoxesBehavior>(context);
-    final scrollController = ScrollController();
+    final scrollController =  ScrollController();
 
     final size = MediaQuery.of(context).size;
     final bool mobile = size.width < 1024 ? true : false;
@@ -30,212 +33,55 @@ class CartWidget extends StatelessWidget {
               duration: const Duration(milliseconds: 500),
               curve: Curves.easeInOut,
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.5,
+              height: MediaQuery.of(context).size.height * 0.6,
               decoration: ShapeDecoration(
-                color: colorBgWhite,
                 shape: RoundedRectangleBorder(
-                  side: const BorderSide(width: 1.5, color: colorInversePrimary),
+                  side: const BorderSide(width: 1.5, color: colorBorder),
                   borderRadius: BorderRadius.circular(13.53),
                 ),
               ),
               child: Consumer<Cart>(
                 builder: (BuildContext context, Cart cart, Widget? child) {
                   return Column(children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                      child: Container(
-                        width: 750.0,
-                        height: 100.0,
-                        decoration: ShapeDecoration(
-                          color: colorPrimary,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14.88),
-                          ),
-                          shadows: const [
-                            BoxShadow(
-                              color: colorBoxShadow,
-                              blurRadius: 3.97,
-                              offset: Offset(0, 0.99),
-                              spreadRadius: 0,
-                            )
-                          ],
-                        ),
-                      ),
+                    SelectorCountItemWidget(
+                      title: "5G Home Internet Plan", 
+                      description: "5G Home Internet Plan", 
+                      price: "30.00", 
+                      image: "https://nsrprlygqaqgljpfggjh.supabase.co/storage/v1/object/public/assets/5G%20Home%20Internet%20Plan.png?t=2024-01-08T22%3A03%3A43.207Z", 
+                      counter: 1,
+                      isRequired: true,
                     ),
                     Expanded(
-                        child: Scrollbar(
-                      controller: scrollController,
-                      thumbVisibility: true,
-                      child: SingleChildScrollView(
-                          controller: scrollController,
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: <Widget>[
-                              const CartTab(title: "Service Plans"),
-
-                              ColumnBuilder(
-                                itemCount: cart.products.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  if (cart.products.isEmpty) {
-                                    return const Text('no products in cart');
-                                  }
-                                  final item = cart.products[index];
-                                  return ListTile(
-                                      leading: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Container(
-                                            margin: const EdgeInsets.only(
-                                                right: 8),
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  const BorderRadius.all(
-                                                      Radius.circular(25.0)),
-                                              border: Border.all(
-                                                color: colorSecondary,
-                                                width: 1.5,
-                                              ),
-                                            ),
-                                            child: const IconButton(
-                                              iconSize: 20,
-                                              padding:
-                                                  EdgeInsets.all(1),
-                                              constraints:
-                                                  BoxConstraints(),
-                                              icon: Icon(
-                                                Icons.check,
-                                                color: colorSecondary,
-                                                size: 20,
-                                              ),
-                                              onPressed: null,
-                                            ),
-                                          ),
-                                          Image.asset(
-                                            'images/you-pointer.png',
-                                            height: 30,
-                                            width: 30,
-                                          ),
-                                        ],
-                                      ),
-                                      title: Text(item.name,
-                                          style: GoogleFonts.workSans(
-                                              fontSize: 16,
-                                              color: colorPrimary,
-                                              fontWeight: FontWeight.w700,
-                                              letterSpacing: -0.5)),
-                                      subtitle: Text(item.category,
-                                          style: GoogleFonts.workSans(
-                                              fontSize: 13,
-                                              color: colorInversePrimary,
-                                              fontWeight: FontWeight.w400)),
-                                      trailing: Text(
-                                          '\$${item.cost} mo',
-                                          style: GoogleFonts.workSans(
-                                              fontSize: 18,
-                                              color: colorPrimary,
-                                              fontWeight: FontWeight.w300,
-                                              letterSpacing: -1.0)));
-                                },
-                              ),
-
-                              const CartTab(title: "Devices"),
-
-                              ColumnBuilder(
-                                itemCount:
-                                    cart.additionalsDevicesSelected.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return ListTile(
-                                    leading: 
-                                    Image.asset(
-                                        'images/you-pointer.png',
-                                        height: 30,
-                                        width: 30,
-                                      ),
-                                    title: Text('Package $index',
-                                        style: GoogleFonts.workSans(
-                                            fontSize: 16,
-                                            color: colorPrimary,
-                                            fontWeight: FontWeight.w700,
-                                            letterSpacing: -0.5)),
-                                    trailing: Text(
-                                        '\$ 30/mo',
-                                        style: GoogleFonts.workSans(
-                                            fontSize: 18,
-                                            color: colorPrimary,
-                                            fontWeight: FontWeight.w300,
-                                            letterSpacing: -1.0)),
-                                  );
-                                },
-                              ),
-
-                              const CartTab(title: "Discounts"),
-
-                              ColumnBuilder(
-                                itemCount: cart.discounts.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  if (cart.discounts.isEmpty) {
-                                    return const Text('');
-                                  }
-                                  final item = cart.discounts[index];
-                                  return ListTile(
-                                    title: Text(item.name,
-                                        style: GoogleFonts.workSans(
-                                            fontSize: 16,
-                                            color: colorPrimary,
-                                            fontWeight: FontWeight.w700,
-                                            letterSpacing: -0.5)),
-                                    trailing: Text(
-                                        '\$ 30 /mo',
-                                        style: GoogleFonts.workSans(
-                                            fontSize: 18,
-                                            color: colorPrimary,
-                                            fontWeight: FontWeight.w300,
-                                            letterSpacing: -1.0)),
-                                    // onTap: () {
-                                    //   context.read<Cart>().removeFromCart(item);
-                                    // },
-                                  );
-                                },
-                              ),
-                            ],
-                          )),
-                    )),
-                    const Divider(),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 5.0, bottom: 15.0, left: 20.0, right: 20.0),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('Subtotal',
-                                style: GoogleFonts.workSans(
-                                    fontSize: 16,
-                                    color: colorPrimary,
-                                    fontWeight: FontWeight.w600,
-                                    letterSpacing: -0.5)),
-                            Text(
-                                '\$${cart.total}',
-                                style: GoogleFonts.workSans(
-                                    fontSize: 30,
-                                    color: colorPrimary,
-                                    fontWeight: FontWeight.w300,
-                                    letterSpacing: -0.5)),
-                            //style: Theme.of(context).textTheme.headline3
-                          ]),
-                    ),
-                    Visibility(
-                      visible: !mobile,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Divider(),
-                          Padding(
-                            padding: const EdgeInsets.all(20),
-                            child:styledButton(context),
-                          )
-                        ],
+                      child: Scrollbar(
+                        controller: scrollController,
+                        thumbVisibility: true,
+                        child: SingleChildScrollView(
+                        controller: scrollController,
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: <Widget>[
+                                            
+                            ColumnBuilder(
+                              itemCount: 2,
+                              itemBuilder: (BuildContext context, int index) {
+                        
+                                return SelectorCountItemWidget(
+                                  isRequired: false,
+                                  title: "U-wifi Hat", 
+                                  description: "Black Baseball style hat, with chrome color U-wifi Logo", 
+                                  price: "11.99", 
+                                  image: "https://nsrprlygqaqgljpfggjh.supabase.co/storage/v1/object/public/assets/Black%20cap.png?t=2024-01-08T23%3A23%3A05.776Z", 
+                                  counter: 0
+                                );
+                              },
+                            ),
+                                            
+                          ],
+                        )),
                       ),
-                    )
+                    ),
+
+                    const BottomCartSectionWidget(),
                   ]);
                 },
               ),

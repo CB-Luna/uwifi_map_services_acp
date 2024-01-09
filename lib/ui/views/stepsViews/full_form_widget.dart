@@ -28,7 +28,6 @@ class _FullFormWidgetState extends State<FullFormWidget> {
         children: [
           Container(
             width:  MediaQuery.of(context).size.width * (isMobile ? 0.9 : 0.4),
-            height: 945,
             decoration: ShapeDecoration(
               gradient: const LinearGradient(
                 begin: Alignment(-0.32, -0.95),

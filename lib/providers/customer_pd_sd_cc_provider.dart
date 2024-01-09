@@ -180,7 +180,7 @@ class CustomerPDSDCCProvider with ChangeNotifier {
   //Billing Details
   //<<Form>>
   //Bandera Checkbox BD same as SD
-  bool sameAsSD = false;
+  bool sameAsSD = true;
   // Billing Details
   GlobalKey<FormState> formKeyCC = GlobalKey<FormState>();
   final TextEditingController parsedAddress1BD = TextEditingController(text: "");

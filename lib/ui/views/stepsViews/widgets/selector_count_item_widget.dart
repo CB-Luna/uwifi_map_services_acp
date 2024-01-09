@@ -61,7 +61,7 @@ class SelectorCountItemWidget extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: SizedBox(
                 width: 200.0,
                 child: Column(

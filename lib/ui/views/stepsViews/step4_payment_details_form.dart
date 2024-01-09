@@ -5,6 +5,7 @@ import 'package:uwifi_map_services_acp/providers/customer_pd_sd_cc_provider.dart
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/custom_credit_card.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/custom_form_credit_card.dart';
+import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/form_payment_address.dart';
 
 class Step4PaymentDetailsForm extends StatefulWidget {
   const Step4PaymentDetailsForm({Key? key}) : super(key: key);
@@ -68,14 +69,22 @@ class _Step4PaymentDetailsFormState extends State<Step4PaymentDetailsForm> {
             ],
           )
           :
-          const Row(
+          Column(
             children: [
-              Flexible(
-                child: CustomCreditCard()
+              const Row(
+                children: [
+                  Flexible(
+                    child: CustomCreditCard()
+                  ),
+                  Flexible(
+                    child: CustomFormCreditCard()
+                  ),
+                ],
               ),
-              Flexible(
-                child: CustomFormCreditCard()
-              ),
+              Visibility(
+                visible: !customerPDSDCCController.sameAsSD,
+                child: const FormPaymentAddress(),
+              )
             ],
           ),
         ),
@@ -86,7 +95,7 @@ class _Step4PaymentDetailsFormState extends State<Step4PaymentDetailsForm> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  'Same Billing and Shipping Address',
+                  'Same Billing as Shipping Address',
                   style: GoogleFonts.workSans(
                   fontSize: isMobile ? 12 : 16,
                   color: colorInversePrimary,

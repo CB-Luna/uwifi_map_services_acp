@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/cart.dart';
+import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/extras_section_widget.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/header_cart_section_widget.dart';
 
 class CartSummaryWidget extends StatelessWidget {
@@ -17,6 +18,10 @@ class CartSummaryWidget extends StatelessWidget {
           controller: ScrollController(),
           child: const Column(
             children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: ExtrasSection(),
+              ),
               HeaderCartSectionWidget(),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),

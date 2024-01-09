@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:uwifi_map_services_acp/providers/tracking_provider.dart' as track;
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
-import '../../../../providers/steps_controller.dart';
+import '../../../../../providers/steps_controller.dart';
 
 //Pendiente de separar los botones
 

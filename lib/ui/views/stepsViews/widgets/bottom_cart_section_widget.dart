@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
-import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/cart_buttons_views.dart';
+import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/buttons/cart_buttons_views.dart';
+import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/buttons/custom_outlined_button.dart';
 
 class BottomCartSectionWidget extends StatelessWidget {
   const BottomCartSectionWidget({
@@ -38,55 +39,48 @@ class BottomCartSectionWidget extends StatelessWidget {
                         width: 180,
                         height: 50,
                         child: TextFormField(
-                          autovalidateMode:
-                              AutovalidateMode.onUserInteraction,
-                          onChanged: (value) => {
-                            
-                          },
-                          validator: (value) {
-                            final RegExp regex =
-                                RegExp(r"^\s*[a-zA-Z ,.'-]+\s*$");
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter a name';
-                            } else if (!regex.hasMatch(value)) {
-                              return 'Please enter a valid name';
-                            }
-                            return null;
-                          },
-                          style: const TextStyle(color: colorPrimaryDark),
-                          decoration: const InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(horizontal: 5),
-                            fillColor: colorBgWhite,
-                            filled: true,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: 137,
-                        height: 48,
-                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 13.50),
-                        decoration: ShapeDecoration(
-                          shape: RoundedRectangleBorder(
-                            side: const BorderSide(width: 3, color: colorSecondary),
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                        ),
-                        child: const Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Apply Coupon',
-                              style: TextStyle(
-                                color: colorInversePrimary,
-                                fontSize: 14,
-                                fontFamily: 'Lexend',
-                                fontWeight: FontWeight.w500,
-                                height: 0.11,
+                            // validator: (value) {
+                            // },
+                            decoration: InputDecoration(
+                              labelText: 'Coupon Code',
+                              labelStyle: TextStyle(
+                                  color: Color(0xFF8D8D8D),
+                                  fontSize: 16,
+                                  fontFamily: 'Lexend',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0.09,
+                                ),
+                              hintText: 'Coupon Code...',
+                              hintStyle: TextStyle(
+                                  color: Color(0xFF8D8D8D),
+                                  fontSize: 16,
+                                  fontFamily: 'Lexend',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0.09,
+                                ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              filled: true,
+                              fillColor: colorBgWhite,
                             ),
-                          ],
+                            style: TextStyle(
+                              color: colorPrimary,
+                              fontSize: 16,
+                              fontFamily: 'Lexend',
+                              fontWeight: FontWeight.w400,
+                              height: 0.09,
+                            ),
+                          ),
+                      ),
+                      const SizedBox(
+                        width: 125,
+                        height: 30,
+                        child: CustomOutlinedButton(
+                          text: "Apply Coupon",
                         ),
                       ),
                     ],

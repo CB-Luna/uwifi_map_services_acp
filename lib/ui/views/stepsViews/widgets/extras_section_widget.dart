@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:uwifi_map_services_acp/providers/cart_controller.dart';
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
 
 class ExtrasSection extends StatelessWidget {
@@ -7,6 +9,8 @@ class ExtrasSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartController = Provider.of<Cart>(context);
+    
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: SizedBox(
@@ -77,7 +81,7 @@ class ExtrasSection extends StatelessWidget {
                         viewportFraction: 0.4,
                         autoPlay: true,
                       ),
-                      items: [1, 2, 3, 4].map((i) {
+                      items: cartController.merchant.map((merchantItem) {
                         return Builder(
                           builder: (BuildContext context) {
                             return Flexible(
@@ -90,8 +94,8 @@ class ExtrasSection extends StatelessWidget {
                                     width: 135,
                                     height: 135,
                                     decoration: ShapeDecoration(
-                                      image: const DecorationImage(
-                                        image: NetworkImage("https://nsrprlygqaqgljpfggjh.supabase.co/storage/v1/object/public/assets/u-wifi%20phone%20case.png"),
+                                      image: DecorationImage(
+                                        image: NetworkImage(merchantItem.imageurl),
                                         fit: BoxFit.fill,
                                         ),
                                       shape: RoundedRectangleBorder(
@@ -99,18 +103,18 @@ class ExtrasSection extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  const Text(
-                                  "Powerbank 20,000",
-                                    style: TextStyle(
+                                  Text(
+                                  merchantItem.name,
+                                    style: const TextStyle(
                                     color: colorBgDark,
                                     fontSize: 14.0,
                                     fontFamily: 'Quicksand',
                                     fontWeight: FontWeight.w700,
                                     ),
                                   ),
-                                  const Text(
-                                    "\$29.99",
-                                    style: TextStyle(
+                                  Text(
+                                    "\$${merchantItem.cost}",
+                                    style: const TextStyle(
                                     color: colorBorder,
                                     fontSize: 15.9,
                                     fontFamily: 'Quicksand',

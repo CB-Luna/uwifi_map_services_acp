@@ -98,7 +98,7 @@ class _Step3ShippingDetailsFormState extends State<Step3ShippingDetailsForm> {
                               icon: Icons.house_outlined,
                               maxHeight: 55),
                           style: const TextStyle(
-                            color: colorPrimaryDark,
+                            color: colorBgWhite,
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -126,7 +126,7 @@ class _Step3ShippingDetailsFormState extends State<Step3ShippingDetailsForm> {
                               icon: Icons.house_outlined,
                               maxHeight: 55),
                           style: const TextStyle(
-                            color: colorPrimaryDark,
+                            color: colorBgWhite,
                           ),
                         ),
                       ),                      
@@ -179,7 +179,7 @@ class _Step3ShippingDetailsFormState extends State<Step3ShippingDetailsForm> {
                               maxHeight: 55,
                               isAvailable: false),
                           style: const TextStyle(
-                            color: colorPrimaryDark,
+                            color: colorBgWhite,
                           ),
                         ),
                       ),
@@ -211,7 +211,7 @@ class _Step3ShippingDetailsFormState extends State<Step3ShippingDetailsForm> {
                                 : 'Please enter a valid zipcode';
                           },
                           style: const TextStyle(
-                            color: colorPrimaryDark,
+                            color: colorBgWhite,
                           ),
                         ),
                       ),

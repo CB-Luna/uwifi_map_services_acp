@@ -60,7 +60,7 @@ class FormPaymentAddress extends StatelessWidget {
                             icon: Icons.house_outlined,
                             maxHeight: 55),
                         style: const TextStyle(
-                          color: colorPrimaryDark,
+                          color: colorBgWhite,
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -88,7 +88,7 @@ class FormPaymentAddress extends StatelessWidget {
                             icon: Icons.house_outlined,
                             maxHeight: 55),
                         style: const TextStyle(
-                          color: colorPrimaryDark,
+                          color: colorBgWhite,
                         ),
                       ),
                     ),
@@ -119,7 +119,7 @@ class FormPaymentAddress extends StatelessWidget {
                               : 'Please enter a valid zipcode';
                         },
                         style: const TextStyle(
-                          color: colorPrimaryDark,
+                          color: colorBgWhite,
                         ),
                       ),
                     ),
@@ -170,7 +170,7 @@ class FormPaymentAddress extends StatelessWidget {
                             maxHeight: 55,
                             isAvailable: false),
                         style: const TextStyle(
-                          color: colorPrimaryDark,
+                          color: colorBgWhite,
                         ),
                         validator: (value) {
                           return validCharacters.hasMatch(value ?? '')

@@ -56,7 +56,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
           child: Text(
             value,
             style: const TextStyle(
-              color: colorPrimary,
+              color: colorBgWhite,
               fontFamily: 'Bicyclette-Thin',
             ),
           ),

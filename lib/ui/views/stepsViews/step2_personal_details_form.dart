@@ -105,7 +105,7 @@ class _Step2PersonalDetailsFormState extends State<Step2PersonalDetailsForm> {
                               : 'Please enter your name, the name should be capitalized.';
                           },
                           style: const TextStyle(
-                            color: colorPrimaryDark,
+                            color: colorBgWhite,
                           ),
                         ),
                         ),
@@ -135,7 +135,7 @@ class _Step2PersonalDetailsFormState extends State<Step2PersonalDetailsForm> {
                               : 'Please enter your last name, the last name should be capitalized.';
                           },
                           style: const TextStyle(
-                            color: colorPrimaryDark,
+                            color: colorBgWhite,
                           ),
                         ),
                       ),
@@ -176,7 +176,7 @@ class _Step2PersonalDetailsFormState extends State<Step2PersonalDetailsForm> {
                                 : 'Please enter a valid phone number';
                           },
                           style: const TextStyle(
-                            color: colorPrimaryDark,
+                            color: colorBgWhite,
                           ),
                         ),
                       ),
@@ -206,7 +206,7 @@ class _Step2PersonalDetailsFormState extends State<Step2PersonalDetailsForm> {
                                 : 'Please enter a valid e-mail address';
                           },
                           style: const TextStyle(
-                            color: colorPrimaryDark,
+                            color: colorBgWhite,
                           ),
                         ),
                       ),

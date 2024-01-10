@@ -2,17 +2,14 @@ import 'package:badges/badges.dart' as badge;
 import 'package:clay_containers/constants.dart';
 import 'package:clay_containers/widgets/clay_container.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:uwifi_map_services_acp/data/constants.dart';
 import 'package:uwifi_map_services_acp/providers/cart_controller.dart';
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
-import 'package:uwifi_map_services_acp/ui/inputs/custom_inputs.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/bottom_cart_section_widget.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/column_builder.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/selector_count_item_widget.dart';
 import '../../../../providers/remote/boxes_behavior_controller.dart';
-import 'cart_buttons_views.dart';
 
 class CartWidget extends StatelessWidget {
   const CartWidget({Key? key}) : super(key: key);

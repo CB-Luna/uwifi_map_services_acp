@@ -139,7 +139,7 @@ class _Step1ACPSSNFormState extends State<Step1ACPSSNForm> {
                             : 'Please enter your ACP number');
                       },
                       style: const TextStyle(
-                        color: colorPrimaryDark,
+                        color: colorBgWhite,
                       ),
                                                 ),
                     ),

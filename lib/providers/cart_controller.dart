@@ -16,12 +16,69 @@ class Cart with ChangeNotifier {
         cost: 30.0,
         imageurl: "",
         service: "uwifiPlan",
-        category: "plan",
+        description: "plan",
         quantity: 1,
         pwName: "U-wifi Service Plan")];
-  List<Product> devices = [];
+  
+  List<Product> merchant = [
+    Product(
+        id: '1',
+        name: "U-wifi Hat",
+        cost: 11.99,
+        imageurl: "https://nsrprlygqaqgljpfggjh.supabase.co/storage/v1/object/public/assets/Black%20cap.png?t=2024-01-08T23%3A23%3A05.776Z",
+        service: "uwifiPlan",
+        description: "Black Baseball style hat, with chrome color U-wifi Logo.",
+        quantity: 1,
+        pwName: "U-wifi Hat 1"),
+    Product(
+        id: '2',
+        name: "Powerbank 20,000",
+        cost: 29.99,
+        imageurl: "https://nsrprlygqaqgljpfggjh.supabase.co/storage/v1/object/public/assets/powerbank%2020000.png",
+        service: "uwifiPlan",
+        description: "The 20,000 mAh power bank can recharge a smartphone up to 8 consecutive times.",
+        quantity: 1,
+        pwName: "Powerbank 20,000 2"),
+    Product(
+        id: '3',
+        name: "Powerbank 10,000",
+        cost: 19.99,
+        imageurl: "https://nsrprlygqaqgljpfggjh.supabase.co/storage/v1/object/public/assets/powerbank%2010000.png",
+        service: "uwifiPlan",
+        description: "The 10,000 mAh power bank can recharge a smartphone up to 4 consecutive times.",
+        quantity: 1,
+        pwName: "Powerbank 10,000 3"),
+     Product(
+        id: '4',
+        name: "U-wifi Phone Case",
+        cost: 9.99,
+        imageurl: "https://nsrprlygqaqgljpfggjh.supabase.co/storage/v1/object/public/assets/u-wifi%20phone%20case.png",
+        service: "uwifiPlan",
+        description: "Cover that protects the outside of your phone and acts as a guard to your gadget against scratches, grime, and other risks.",
+        quantity: 1,
+        pwName: "U-wifi Phone Case 4"),
+     Product(
+        id: '5',
+        name: "U-wifi Keychain",
+        cost: 4.99,
+        imageurl: "https://nsrprlygqaqgljpfggjh.supabase.co/storage/v1/object/public/assets/u-wifi%20keychain.png",
+        service: "uwifiPlan",
+        description: "Small ring or chain of metal to which several keys can be attached.",
+        quantity: 1,
+        pwName: "U-wifi Keychain 5"),
+      Product(
+        id: '6',
+        name: "U-wifi Black T-shirt",
+        cost: 11.99,
+        imageurl: "https://nsrprlygqaqgljpfggjh.supabase.co/storage/v1/object/public/assets/U-wifi%20black%20t%20shirt.png",
+        service: "uwifiPlan",
+        description: "Classic black cotton t-shirt, with withe U-wifi Logo.",
+        quantity: 1,
+        pwName: "U-wifi Black T-shirt 6")
+  ];
   List<Product> additionalsDevicesSelected = [];
   List<Product> discounts = [];
+  List<Product> merchantSelected = [];
   
 
   int get generalCartCounter {
@@ -45,7 +102,7 @@ class Cart with ChangeNotifier {
   bool isSelectedGigFastTV() {
     bool isSelectedGigFastTV = false;
     for (var i = 0; i < products.length; i++) {
-      if (products[i].category == "gigFastTV") {
+      if (products[i].description == "gigFastTV") {
         isSelectedGigFastTV = true;
       }
     }
@@ -55,7 +112,7 @@ class Cart with ChangeNotifier {
   bool isSelectedGigFastVoice() {
     bool isSelectedGigFastVoice = false;
     for (var i = 0; i < products.length; i++) {
-      if (products[i].category == "gigFastVoice") {
+      if (products[i].description == "gigFastVoice") {
         isSelectedGigFastVoice = true;
       }
     }
@@ -104,7 +161,7 @@ class Cart with ChangeNotifier {
     //Consulta si en toda la lista de productos hay algún item de la misma categoría que se quiere agregar
     else {
       List<Product> contains =
-          products.where((item) => item.category == product.category).toList();
+          products.where((item) => item.description == product.description).toList();
 
       //Si no se encuentran elementos de la misma categoría, no hay problema en agregar el producto
       if (contains.isEmpty) {
@@ -131,7 +188,7 @@ class Cart with ChangeNotifier {
         cost: discountValue,
         imageurl: "",
         service: "BundleDiscount",
-        category: "${productsQty}PlayDiscounts",
+        description: "${productsQty}PlayDiscounts",
         quantity: 1,
         pwName: "Bundle Discount");
 
@@ -158,7 +215,7 @@ class Cart with ChangeNotifier {
         cost: double.parse(promo.price!),
         imageurl: "",
         service: "promo",
-        category: promo.family!,
+        description: promo.family!,
         quantity: 1,
         pwName: promo.pwName!);
   }

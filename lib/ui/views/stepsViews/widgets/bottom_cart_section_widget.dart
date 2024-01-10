@@ -77,7 +77,7 @@ class BottomCartSectionWidget extends StatelessWidget {
                         width: 10,
                       ),
                       const SizedBox(
-                        width: 130,
+                        width: 150,
                         height: 30,
                         child: CustomOutlinedButton(
                           text: "Apply Coupon",

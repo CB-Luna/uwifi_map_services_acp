@@ -46,7 +46,6 @@ class CustomOutlinedButton extends StatelessWidget {
         fontSize: 12,
         fontFamily: 'Lexend',
         fontWeight: FontWeight.w500,
-        height: 0.11,
         ),
       ),
     );

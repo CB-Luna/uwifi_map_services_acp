@@ -63,9 +63,10 @@ class SelectorCountItemWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: SizedBox(
-                width: 200.0,
+                width: 220.0,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
                       title,
@@ -74,7 +75,6 @@ class SelectorCountItemWidget extends StatelessWidget {
                         fontSize: 20.0,
                         fontFamily: 'Quicksand',
                         fontWeight: FontWeight.w700,
-                        height: 0,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -85,7 +85,6 @@ class SelectorCountItemWidget extends StatelessWidget {
                         fontSize: 12.0,
                         fontFamily: 'Quicksand',
                         fontWeight: FontWeight.w500,
-                        height: 0,
                       ),
                       textAlign: TextAlign.center,
                     ),

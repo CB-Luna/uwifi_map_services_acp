@@ -36,7 +36,7 @@ class BottomCartSectionWidget extends StatelessWidget {
                   Row(
                     children: [
                       SizedBox(
-                        width: 120,
+                        width: 130,
                         height: 35,
                         child: TextFormField(
                           cursorColor: colorBorder,
@@ -77,7 +77,7 @@ class BottomCartSectionWidget extends StatelessWidget {
                         width: 10,
                       ),
                       const SizedBox(
-                        width: 125,
+                        width: 130,
                         height: 30,
                         child: CustomOutlinedButton(
                           text: "Apply Coupon",

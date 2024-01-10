@@ -73,19 +73,19 @@ class ExtrasSection extends StatelessWidget {
                     ],
                   ),
                   //Carrousel
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.35,
-                    height: 200,
-                    child: CarouselSlider(
-                      options: CarouselOptions(
-                        viewportFraction: 0.4,
-                        autoPlay: true,
-                      ),
-                      items: cartController.merchant.map((merchantItem) {
-                        return Builder(
-                          builder: (BuildContext context) {
-                            return Flexible(
-                              child: Column(
+                  Flexible(
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.35,
+                      height: 200,
+                      child: CarouselSlider(
+                        options: CarouselOptions(
+                          viewportFraction: 0.4,
+                          autoPlay: true,
+                        ),
+                        items: cartController.merchant.map((merchantItem) {
+                          return Builder(
+                            builder: (BuildContext context) {
+                              return Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 mainAxisSize: MainAxisSize.min,
@@ -127,11 +127,11 @@ class ExtrasSection extends StatelessWidget {
                                     ),
                                   )
                                 ],
-                              ),
-                            );
-                          },
-                        );
-                      }).toList(),
+                              );
+                            },
+                          );
+                        }).toList(),
+                      ),
                     ),
                   ),
                 ],

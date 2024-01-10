@@ -90,17 +90,21 @@ class _Step4PaymentDetailsFormState extends State<Step4PaymentDetailsForm> {
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Flexible(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Flexible(
+                flex: 3,
+                child: Text(
                   'Same Billing as Shipping Address',
                   style: GoogleFonts.workSans(
                   fontSize: isMobile ? 12 : 16,
                   color: colorInversePrimary,
                   fontWeight: FontWeight.normal)),
-                Checkbox(
+              ),
+              Flexible(
+                flex: 1,
+                child: Checkbox(
                   side: const BorderSide(
                     color: colorBgWhite,
                     width: 2.0
@@ -111,8 +115,8 @@ class _Step4PaymentDetailsFormState extends State<Step4PaymentDetailsForm> {
                     customerPDSDCCController.changeValuesBillingDetails();
                   },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ],

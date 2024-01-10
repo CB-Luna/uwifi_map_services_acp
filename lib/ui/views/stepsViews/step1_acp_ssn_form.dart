@@ -41,47 +41,49 @@ class _Step1ACPSSNFormState extends State<Step1ACPSSNForm> {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 15),
-            child: Flexible(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                    child: Icon(
-                      Icons.person_outline,
-                      color: colorInversePrimary,
-                      size: isMobile ? 25 : 40,
-                    ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                  child: Icon(
+                    Icons.person_outline,
+                    color: colorInversePrimary,
+                    size: isMobile ? 25 : 40,
                   ),
-                  Text(
-                    customerSSNACPController.acpNumberR ? 
-                      'SSN' :
-                      'ACP Number',
-                    style: TextStyle(
-                      color: colorInversePrimary,
-                      fontSize: isMobile ? 18 : 26,
-                      fontFamily: 'Quicksand',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
+                ),
+                Text(
+                  customerSSNACPController.acpNumberR ? 
+                    'SSN' :
+                    'ACP Number',
+                  style: TextStyle(
+                    color: colorInversePrimary,
+                    fontSize: isMobile ? 18 : 26,
+                    fontFamily: 'Quicksand',
+                    fontWeight: FontWeight.w700,
+                    height: 0,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Flexible(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Flexible(
+                  flex: 3,
+                  child: Text(
                     "I don't remember my ACP Number",
                     style: GoogleFonts.workSans(
                     fontSize: isMobile ? 12 : 16,
                     color: colorInversePrimary,
                     fontWeight: FontWeight.normal)),
-                  Checkbox(
+                ),
+                Flexible(
+                  flex: 1,
+                  child: Checkbox(
                     side: const BorderSide(
                       color: colorBgWhite,
                       width: 2.0
@@ -92,8 +94,8 @@ class _Step1ACPSSNFormState extends State<Step1ACPSSNForm> {
                       customerSSNACPController.changeRemeberACPNumber();
                     },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           Form(
@@ -145,7 +147,7 @@ class _Step1ACPSSNFormState extends State<Step1ACPSSNForm> {
                     ),
                   ),
               ],
-           )),
+                         )),
         ]);
   }
 }

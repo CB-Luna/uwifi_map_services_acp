@@ -63,7 +63,7 @@ class CustomerPDSDProvider with ChangeNotifier {
   final TextEditingController parsedStateSD = TextEditingController(text: "");
   final TextEditingController parsedStateCodeSD = TextEditingController(text: "");
 
-  LatLng? position;
+  LatLng? positionSD;
 
   CustomerPDSDProvider(this._searchRepository, this.key, {bool notify = true}) {
     //initialize
@@ -125,7 +125,7 @@ class CustomerPDSDProvider with ChangeNotifier {
       }  
       parsedZipcodeSD.text = temp[1];
       zipcode= temp[1];
-      position = place.position;
+      positionSD = place.position;
     }
     notifyListeners();
   }

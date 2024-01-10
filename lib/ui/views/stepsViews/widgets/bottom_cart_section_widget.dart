@@ -123,8 +123,8 @@ class BottomCartSectionWidget extends StatelessWidget {
                 children: [
                   const RowSummaryWidget(
                     firstString: "Subtotal",
-                    secondString: "\$497.00",
-                    thirdString: "Items (3)",
+                    secondString: "\$30.00",
+                    thirdString: "Items (1)",
                   ),
                    const RowSummaryWidget(
                     firstString: "Taxes",

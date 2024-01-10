@@ -62,9 +62,6 @@ class FinalPopupACPNotFound extends StatelessWidget {
                       minimumSize: const Size.fromHeight(50),
                     ),
                     onPressed: () async {
-                      // Abrir el enlace cuando se toque
-                      await launchUrl(Uri.parse(
-                      'https://cb-luna.github.io/uwifi_map_services-build/'));
                     },
                     child: Text(
                       'Buy Now',

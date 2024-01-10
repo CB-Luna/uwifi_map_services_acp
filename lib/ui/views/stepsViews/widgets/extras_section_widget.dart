@@ -90,16 +90,21 @@ class ExtrasSection extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Container(
-                                    width: 135,
-                                    height: 135,
-                                    decoration: ShapeDecoration(
-                                      image: DecorationImage(
-                                        image: NetworkImage(merchantItem.imageurl),
-                                        fit: BoxFit.fill,
+                                  InkWell(
+                                    onTap: () {
+                                      
+                                    },
+                                    child: Container(
+                                      width: 135,
+                                      height: 135,
+                                      decoration: ShapeDecoration(
+                                        image: DecorationImage(
+                                          image: NetworkImage(merchantItem.imageurl),
+                                          fit: BoxFit.fill,
+                                          ),
+                                        shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(11.29),
                                         ),
-                                      shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(11.29),
                                       ),
                                     ),
                                   ),

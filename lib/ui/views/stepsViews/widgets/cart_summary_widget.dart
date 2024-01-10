@@ -18,10 +18,7 @@ class CartSummaryWidget extends StatelessWidget {
           controller: ScrollController(),
           child: const Column(
             children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                child: ExtrasSection(),
-              ),
+              ExtrasSection(),
               HeaderCartSectionWidget(),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),

@@ -11,7 +11,7 @@ class HeaderCartSectionWidget extends StatelessWidget {
     return Padding(padding: const EdgeInsets.all(16.0),
     child: Container(
         width: MediaQuery.of(context).size.width,
-        height: 50,
+        height: MediaQuery.of(context).size.height * 0.05,
         padding: const EdgeInsets.only(bottom: 5),
         decoration: const BoxDecoration(
             border: Border(

@@ -39,14 +39,22 @@ class CartWidget extends StatelessWidget {
               ),
               child: Consumer<Cart>(
                 builder: (BuildContext context, Cart cart, Widget? child) {
+                  final service = cartController.services.first;
                   return Column(children: <Widget>[
+
                     SelectorCountItemWidget(
-                      title: "5G Home Internet Plan", 
-                      description: "5G Home Internet Plan", 
-                      price: "30.00", 
-                      image: "https://nsrprlygqaqgljpfggjh.supabase.co/storage/v1/object/public/assets/5G%20Home%20Internet%20Plan.png?t=2024-01-08T22%3A03%3A43.207Z", 
+                      title: service.name, 
+                      description: service.description, 
+                      subtotal: "${service.subtotal}", 
+                      image: service.imageurl, 
                       counter: 1,
                       isRequired: true,
+                      onRemove: () {
+                        
+                      },
+                      onIncrementDecrement: (counter) {
+                        
+                      },
                     ),
                     Expanded(
                       child: Scrollbar(
@@ -59,16 +67,23 @@ class CartWidget extends StatelessWidget {
                           children: <Widget>[
                                             
                             ColumnBuilder(
-                              itemCount: 2,
+                              itemCount: cartController.merchantSelected.length,
                               itemBuilder: (BuildContext context, int index) {
+                                final merchant = cartController.merchantSelected[index];
                         
                                 return SelectorCountItemWidget(
                                   isRequired: false,
-                                  title: "U-wifi Hat", 
-                                  description: "Black Baseball style hat, with chrome color U-wifi Logo", 
-                                  price: "11.99", 
-                                  image: "https://nsrprlygqaqgljpfggjh.supabase.co/storage/v1/object/public/assets/Black%20cap.png?t=2024-01-08T23%3A23%3A05.776Z", 
-                                  counter: 0
+                                  title: merchant.name, 
+                                  description: merchant.description, 
+                                  subtotal: "${merchant.subtotal}", 
+                                  image: merchant.imageurl, 
+                                  counter: merchant.quantity,
+                                  onRemove: () {
+                                    cartController.removeFromCart(merchant.id);
+                                  },
+                                  onIncrementDecrement: (counter) {
+                                    cartController.incrementDecrementQuantityCart(merchant.id, counter.toInt());
+                                  },
                                 );
                               },
                             ),

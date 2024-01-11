@@ -2,6 +2,7 @@ class Product {
   final String id;
   final String name;
   final double cost;
+  double subtotal;
   String imageurl;
   final String service;
   final String description; //tipo de producto
@@ -15,6 +16,7 @@ class Product {
     required this.id,
     required this.name,
     required this.cost,
+    this.subtotal = 0.0,
     required this.imageurl,
     required this.service,
     required this.description,
@@ -29,6 +31,7 @@ class Product {
     String? id,
     String? name,
     double? cost,
+    double? subtotal,
     String? imageurl,
     String? service,
     String? description,
@@ -37,11 +40,13 @@ class Product {
     int? quantity,
     String? pwName,
     List<String>? groups,
+    bool? carousel
   }) {
     return Product(
       id: id ?? this.id,
       name: name ?? this.name,
       cost: cost ?? this.cost,
+      subtotal: subtotal ?? this.subtotal,
       imageurl: imageurl ?? this.imageurl,
       service: service ?? this.service,
       description: description ?? this.description,
@@ -49,7 +54,7 @@ class Product {
       isSelected: isSelected ?? this.isSelected,
       quantity: quantity ?? this.quantity,
       pwName: pwName ?? this.pwName,
-      groups: groups ?? this.groups,
+      groups: groups ?? this.groups
     );
   }
 

@@ -6,20 +6,24 @@ import 'package:uwifi_map_services_acp/theme/theme_data.dart';
 class SelectorCountItemWidget extends StatelessWidget {
   final String title;
   final String description;
-  final String price;
+  final String subtotal;
   final String image;
-  final double counter;
+  final int counter;
   bool isRequired = false;
+  final Function() onRemove;
+  final Function(double) onIncrementDecrement;
 
   SelectorCountItemWidget(
     {
       Key? key, 
       required this.title, 
       required this.description, 
-      required this.price, 
+      required this.subtotal, 
       required this.image, 
       required this.counter,
-      required this.isRequired
+      required this.isRequired,
+      required this.onRemove,
+      required this.onIncrementDecrement
     })
       : super(key: key);
 
@@ -95,7 +99,10 @@ class SelectorCountItemWidget extends StatelessWidget {
             AbsorbPointer(
               absorbing: isRequired,
               child: CustomizableCounter(
-                count: counter,
+                minCount: 1,
+                count: counter.toDouble(),
+                onIncrement: onIncrementDecrement,
+                onDecrement: onIncrementDecrement,
                 incrementIcon: Icon(
                   Icons.add,
                   color: isRequired ? colorInversePrimary : colorBgBlack,
@@ -109,7 +116,7 @@ class SelectorCountItemWidget extends StatelessWidget {
               ),
             ),
             Text(
-              '\$$price',
+              '\$$subtotal',
               textAlign: TextAlign.right,
               style: TextStyle(
                 color: isRequired ? colorInversePrimary : colorBgBlack,
@@ -122,13 +129,11 @@ class SelectorCountItemWidget extends StatelessWidget {
             Visibility(
               visible: !isRequired,
               child: InkWell(
+                onTap: onRemove,
                 child: Icon(
                   Icons.delete_outline,
                   color: isRequired ? colorInversePrimary : colorBgBlack,
                 ),
-                onTap: () {
-                  
-                },
               ),
             )
           ],

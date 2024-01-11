@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:uwifi_map_services_acp/providers/cart_controller.dart';
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/buttons/custom_outlined_button.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/cart_buttons_views.dart';
@@ -10,6 +12,7 @@ class BottomCartSectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartController = Provider.of<Cart>(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
       child: Container(
@@ -121,10 +124,10 @@ class BottomCartSectionWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const RowSummaryWidget(
+                  RowSummaryWidget(
                     firstString: "Subtotal",
-                    secondString: "\$30.00",
-                    thirdString: "Items (1)",
+                    secondString: "\$${cartController.total}",
+                    thirdString: "Items (${cartController.generalCartCounter})",
                   ),
                    const RowSummaryWidget(
                     firstString: "Taxes",

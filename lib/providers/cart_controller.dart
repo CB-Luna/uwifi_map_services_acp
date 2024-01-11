@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
 import '../classes/plan.dart';
 import '../classes/product.dart';
 
@@ -10,11 +11,12 @@ class Cart with ChangeNotifier {
   bool isSupportedDevicesVisible = true;
   bool buttonVisible = true;
   bool aciveToogle = false;
-  List<Product> products = [Product(
+  List<Product> services = [Product(
         id: 'uwifiService',
         name: "U-wifi Service Plan",
         cost: 30.0,
-        imageurl: "",
+        subtotal: 30.0,
+        imageurl: "https://nsrprlygqaqgljpfggjh.supabase.co/storage/v1/object/public/assets/5G%20Home%20Internet%20Plan.png?t=2024-01-08T22%3A03%3A43.207Z",
         service: "uwifiPlan",
         description: "plan",
         quantity: 1,
@@ -25,6 +27,7 @@ class Cart with ChangeNotifier {
         id: '1',
         name: "U-wifi Hat",
         cost: 11.99,
+        subtotal: 11.99,
         imageurl: "https://nsrprlygqaqgljpfggjh.supabase.co/storage/v1/object/public/assets/Black%20cap.png?t=2024-01-08T23%3A23%3A05.776Z",
         service: "uwifiPlan",
         description: "Black Baseball style hat, with chrome color U-wifi Logo.",
@@ -34,6 +37,7 @@ class Cart with ChangeNotifier {
         id: '2',
         name: "Powerbank 20,000",
         cost: 29.99,
+        subtotal: 29.99,
         imageurl: "https://nsrprlygqaqgljpfggjh.supabase.co/storage/v1/object/public/assets/powerbank%2020000.png",
         service: "uwifiPlan",
         description: "The 20,000 mAh power bank can recharge a smartphone up to 8 consecutive times.",
@@ -43,6 +47,7 @@ class Cart with ChangeNotifier {
         id: '3',
         name: "Powerbank 10,000",
         cost: 19.99,
+        subtotal: 19.99,
         imageurl: "https://nsrprlygqaqgljpfggjh.supabase.co/storage/v1/object/public/assets/powerbank%2010000.png",
         service: "uwifiPlan",
         description: "The 10,000 mAh power bank can recharge a smartphone up to 4 consecutive times.",
@@ -52,6 +57,7 @@ class Cart with ChangeNotifier {
         id: '4',
         name: "U-wifi Phone Case",
         cost: 9.99,
+        subtotal: 9.99,
         imageurl: "https://nsrprlygqaqgljpfggjh.supabase.co/storage/v1/object/public/assets/u-wifi%20phone%20case.png",
         service: "uwifiPlan",
         description: "Cover that protects the outside of your phone and acts as a guard to your gadget against scratches, grime, and other risks.",
@@ -61,6 +67,7 @@ class Cart with ChangeNotifier {
         id: '5',
         name: "U-wifi Keychain",
         cost: 4.99,
+        subtotal: 4.99,
         imageurl: "https://nsrprlygqaqgljpfggjh.supabase.co/storage/v1/object/public/assets/u-wifi%20keychain.png",
         service: "uwifiPlan",
         description: "Small ring or chain of metal to which several keys can be attached.",
@@ -70,6 +77,7 @@ class Cart with ChangeNotifier {
         id: '6',
         name: "U-wifi Black T-shirt",
         cost: 11.99,
+        subtotal: 11.99,
         imageurl: "https://nsrprlygqaqgljpfggjh.supabase.co/storage/v1/object/public/assets/U-wifi%20black%20t%20shirt.png",
         service: "uwifiPlan",
         description: "Classic black cotton t-shirt, with withe U-wifi Logo.",
@@ -82,42 +90,32 @@ class Cart with ChangeNotifier {
   
 
   int get generalCartCounter {
-    var counter = products.length;
+    var totalMerchant =
+        merchantSelected.fold(0, (int quantityTotal, Product nextProduct) {
+      return quantityTotal + nextProduct.quantity;
+    });
+    var counter = services.length + totalMerchant;
     return counter;
   }
 
   double get total {
-    var totalprod =
-        products.fold(0.0, (double currentTotal, Product nextProduct) {
-      return currentTotal + nextProduct.cost;
+
+    var totalServices =
+        services.fold(0.0, (double currentTotal, Product nextProduct) {
+      return currentTotal + nextProduct.subtotal;
+    });
+
+    var totalMerchant =
+        merchantSelected.fold(0.0, (double currentTotal, Product nextProduct) {
+      return currentTotal + nextProduct.subtotal;
     });
 
 
-    var subtotal = totalprod;
+    var subtotal = (totalMerchant + totalServices).toPrecision(2);
 
     return subtotal;
   }
 
-
-  bool isSelectedGigFastTV() {
-    bool isSelectedGigFastTV = false;
-    for (var i = 0; i < products.length; i++) {
-      if (products[i].description == "gigFastTV") {
-        isSelectedGigFastTV = true;
-      }
-    }
-    return isSelectedGigFastTV;
-  }
-
-  bool isSelectedGigFastVoice() {
-    bool isSelectedGigFastVoice = false;
-    for (var i = 0; i < products.length; i++) {
-      if (products[i].description == "gigFastVoice") {
-        isSelectedGigFastVoice = true;
-      }
-    }
-    return isSelectedGigFastVoice;
-  }
 
 
 
@@ -127,55 +125,65 @@ class Cart with ChangeNotifier {
   }
 
 
-  void changeProductPrice(int index, double amount) {
-    final currCost = products[index].cost;
-    products[index] = products[index].copyWith(cost: currCost + amount);
-    notifyListeners();
-  }
-
 
 //add products
-  void addToCart(Product product) {
-    products.add(product);
-    notifyListeners();
-  }
+  bool addToCart(String idProductUpdate) {
+    // Buscar el índice del producto con el ID dado
+    int? productIndex = merchant.indexWhere((product) => product.id == idProductUpdate);
 
-  void removeFromCart(Product product) {
-    products.remove(product);
-    notifyListeners();
-  }
-
-
-  void productUnselected(Product product) {
-    products.removeWhere((e) => e.name == product.name);
-
-    notifyListeners();
-  }
-
-  validateAddProduct(Product product) {
-    //Identifica si en la lista de productos no hay nada para agregarlo directamente
-    if (products.isEmpty) {
-      products.add(product);
+    // Verificar si se encontró el producto
+    if (productIndex != -1) {
+      Product newProduct = merchant.firstWhere((element) => element.id == idProductUpdate);
+      merchant.remove(newProduct);
+      merchantSelected.add(newProduct);
+      notifyListeners();
+      return true;
+    } else {
+      // El producto con el ID dado no se encontró
+      print('Producto con ID $idProductUpdate no encontrado.');
+      return false;
     }
-
-    //Consulta si en toda la lista de productos hay algún item de la misma categoría que se quiere agregar
-    else {
-      List<Product> contains =
-          products.where((item) => item.description == product.description).toList();
-
-      //Si no se encuentran elementos de la misma categoría, no hay problema en agregar el producto
-      if (contains.isEmpty) {
-        products.add(product);
-      }
-
-      //Si sí encontró un producto de la misma categoría, lo elimina y agrega el nuevo seleccionado
-      else {
-        products.remove(contains.first);
-        products.add(product);
-      }
-    }
-    notifyListeners();
   }
+
+  bool removeFromCart(String idProductUpdate) {
+    // Buscar el índice del producto con el ID dado
+    int? productIndex = merchantSelected.indexWhere((product) => product.id == idProductUpdate);
+
+    // Verificar si se encontró el producto
+    if (productIndex != -1) {
+      Product newProduct = merchantSelected.firstWhere((element) => element.id == idProductUpdate);
+      merchantSelected.remove(newProduct);
+      newProduct.quantity = 1;
+      newProduct.subtotal = newProduct.cost;
+      merchant.add(newProduct);
+      notifyListeners();
+      return true;
+    } else {
+      // El producto con el ID dado no se encontró
+      print('Producto con ID $idProductUpdate no encontrado.');
+      return false;
+    }
+  }
+
+  bool incrementDecrementQuantityCart(String idProductUpdate, int quantity) {
+    // Buscar el índice del producto con el ID dado
+    int? productIndex = merchantSelected.indexWhere((product) => product.id == idProductUpdate);
+
+    // Verificar si se encontró el producto
+    if (productIndex != -1) {
+      // Actualizar la cantidad del producto
+      merchantSelected[productIndex].quantity = quantity;
+      merchantSelected[productIndex].subtotal = (merchantSelected[productIndex].cost * quantity).toPrecision(2);
+      notifyListeners();
+      return true;
+    } else {
+      // El producto con el ID dado no se encontró
+      print('Producto con ID $idProductUpdate no encontrado.');
+      return false;
+    }
+  }
+
+
 
 
 

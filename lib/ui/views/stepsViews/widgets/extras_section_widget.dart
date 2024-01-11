@@ -92,7 +92,7 @@ class ExtrasSection extends StatelessWidget {
                                 children: [
                                   InkWell(
                                     onTap: () {
-                                      
+                                      cartController.addToCart(merchantItem.id);
                                     },
                                     child: Container(
                                       width: 135,

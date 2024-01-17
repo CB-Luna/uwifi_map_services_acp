@@ -79,7 +79,7 @@ class ExtrasSection extends StatelessWidget {
                       height: 200,
                       child: CarouselSlider(
                         options: CarouselOptions(
-                          viewportFraction: 0.4,
+                          viewportFraction: cartController.merchant.length > 2 ?  0.4 : 0.6,
                           autoPlay: true,
                         ),
                         items: cartController.merchant.map((merchantItem) {
@@ -144,39 +144,3 @@ class ExtrasSection extends StatelessWidget {
   }
 }
 
-class ContainerTestWidget extends StatelessWidget {
-  const ContainerTestWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.red,
-      width: 954,
-      height: 366,
-      child: Row(
-        children: [
-          Container(
-            width: 350,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(
-                    "https://nsrprlygqaqgljpfggjh.supabase.co/storage/v1/object/public/assets/fresh_merch.png"),
-                fit: BoxFit.fill,
-              ),
-            ),
-          ),
-          const Column(
-            children: [
-              //Imagenes de arriba
-              Row(),
-              //Carrousel
-              Row(),
-            ],
-          )
-        ],
-      ),
-    );
-  }
-}

@@ -92,37 +92,6 @@ class FormPaymentAddress extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 15),
-                    Flexible(
-                      child: TextFormField(
-                        /// VARIABLE STORAGE
-                        controller: customerPDSDCCController.parsedZipcodeBD,
-                                    
-                        ///VALIDATION TRIGGER
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        obscureText: false,
-                        keyboardType: TextInputType.number,
-                        decoration: CustomInputs().formInputDecoration(
-                            label: 'Zipcode*',
-                            icon: Icons.other_houses_outlined,
-                            maxHeight: 55),
-                                    
-                        inputFormatters: [
-                          LengthLimitingTextInputFormatter(5),
-                          zipcodeFormat
-                        ],
-                        validator: (value) {
-                          return (zipcodeCharacters
-                                      .hasMatch(value ?? '') &&
-                                  value?.length == 5)
-                              ? null
-                              : 'Please enter a valid zipcode';
-                        },
-                        style: const TextStyle(
-                          color: colorBgWhite,
-                        ),
-                      ),
-                    ),
                   ],
                 ),
                 const SizedBox(
@@ -177,6 +146,39 @@ class FormPaymentAddress extends StatelessWidget {
                               ? null
                               : 'Please enter a City';
                         },
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Flexible(
+                      child: TextFormField(
+                        /// VARIABLE STORAGE
+                        controller: customerPDSDCCController.parsedZipcodeBD,
+                                    
+                        ///VALIDATION TRIGGER
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        obscureText: false,
+                        keyboardType: TextInputType.number,
+                        decoration: CustomInputs().formInputDecoration(
+                            label: 'Zipcode*',
+                            icon: Icons.other_houses_outlined,
+                            maxHeight: 55),
+                                    
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(5),
+                          zipcodeFormat
+                        ],
+                        validator: (value) {
+                          return (zipcodeCharacters
+                                      .hasMatch(value ?? '') &&
+                                  value?.length == 5)
+                              ? null
+                              : 'Please enter a valid zipcode';
+                        },
+                        style: const TextStyle(
+                          color: colorBgWhite,
+                        ),
                       ),
                     ),
                     const SizedBox(

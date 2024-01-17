@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
+import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/buttons/custom_icon_button.dart';
 
 import '../../../../data/constants.dart';
 import '../../../../providers/cart_controller.dart';
@@ -47,6 +49,16 @@ class TopBar extends StatelessWidget {
         mainAxisSize: onelineDisplay ? MainAxisSize.min : MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          CustomIconButton(
+            icon: Icons.arrow_back_ios_rounded,
+            text: "Back",
+            onPressed: () async {
+              // Open URL in the actual tab
+              launchUrl(Uri.parse(
+              'https://react--uwifi.netlify.app/'), 
+              webOnlyWindowName: '_self',);
+            },
+          ),
           const Spacer(),
           StepperWidget(
             width: 140,

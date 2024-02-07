@@ -11,6 +11,7 @@ import 'package:uwifi_map_services_acp/providers/customer_info_controller.dart';
 import 'package:uwifi_map_services_acp/providers/customer_pd_sd_cc_provider.dart';
 import 'package:uwifi_map_services_acp/providers/customer_pd_sd_provider.dart';
 import 'package:uwifi_map_services_acp/providers/customer_ssn_acp_provider.dart';
+import 'package:uwifi_map_services_acp/providers/mobile_cart_provider.dart';
 import 'package:uwifi_map_services_acp/providers/remote/suggestions_api.dart';
 import 'package:uwifi_map_services_acp/router/router.dart';
 import 'package:uwifi_map_services_acp/services/navigation_service.dart';
@@ -77,6 +78,10 @@ class AppState extends StatelessWidget {
         ),
         ChangeNotifierProvider<CustomerInfoProvider>(
           create: (_) => CustomerInfoProvider(
+          ),
+        ),
+        ChangeNotifierProvider<MobileCartProvider>(
+          create: (_) => MobileCartProvider(
           ),
         ),
       ],

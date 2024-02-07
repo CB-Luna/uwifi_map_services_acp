@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uwifi_map_services_acp/theme/theme_data.dart';
+import 'package:uwifi_map_services_acp/ui/views/stepsViews/legal_checkbox.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/step1_acp_ssn_form.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/step2_personal_details_form.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/step3_shipping_details_form.dart';
@@ -45,7 +46,8 @@ class _FullFormWidgetState extends State<FullFormWidget> {
                 Step1ACPSSNForm(),
                 Step2PersonalDetailsForm(),
                 Step3ShippingDetailsForm(),
-                Step4PaymentDetailsForm()
+                Step4PaymentDetailsForm(),
+                LegalCheckbox()
                ],
               ),
             ),

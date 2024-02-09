@@ -10,6 +10,7 @@ import 'package:uwifi_map_services_acp/providers/customer_pd_sd_cc_provider.dart
 import 'package:uwifi_map_services_acp/providers/customer_pd_sd_provider.dart';
 import 'package:uwifi_map_services_acp/providers/customer_ssn_acp_provider.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/final_popup_fail.dart';
+import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/final_popup_not_valid_credit_card.dart';
 import 'package:uwifi_map_services_acp/ui/views/stepsViews/widgets/final_popup_success.dart';
 import '../../../../../providers/cart_controller.dart';
 import '../../../../../providers/steps_controller.dart';
@@ -39,7 +40,7 @@ styledButton(context) {
               bool boolSD = stepsController.formValidation();
               bool boolCC = customerPDSDCCController.formValidationCC();
                 if (boolPD && boolSD && boolSSNACP && boolCC) {
-                  finalPressed(context, customerPDSDController, customerPDSDController, customerPDSDCCController, true);
+                  finalPressed(context, customerPDSDController, customerPDSDController, customerPDSDCCController, true, cartController.total);
                 }
             } else {
               bool boolSSNACP = customerSSNACPController.formValidationSSNACP();
@@ -48,7 +49,7 @@ styledButton(context) {
               bool boolPAD = customerInfoController.formValidation();
               bool boolCC = customerPDSDCCController.formValidationCC();
               if (boolPD && boolSD && boolSSNACP && boolPAD && boolCC) {
-                finalPressed(context, customerPDSDController, customerPDSDController, customerPDSDCCController, false);
+                finalPressed(context, customerPDSDController, customerPDSDController, customerPDSDCCController, false, cartController.total);
               }
             }
           },
@@ -59,8 +60,33 @@ styledButton(context) {
   }
 }
 
-void finalPressed(BuildContext context, CustomerPDSDProvider controllerPesonalD, CustomerPDSDProvider controllerShippingD, CustomerPDSDCCProvider controllerPaymentD, bool sameAsSD) async {
-        try {
+void finalPressed(BuildContext context, CustomerPDSDProvider controllerPesonalD, CustomerPDSDProvider controllerShippingD, CustomerPDSDCCProvider controllerPaymentD, bool sameAsSD, double total) async {
+    try {
+      //Se crea la la pasarela de Pago para el Usuario
+      // print("num ${controllerPaymentD.number.text.replaceAll(" ", "")}");
+      // print("Date ${controllerPaymentD.date.text}");
+      // print("Month ${controllerPaymentD.date.text.split("/")[0]}");
+      // print("Year ${controllerPaymentD.date.text.split("/")[1]}");
+      // print("Total centavos ${int.parse((total.round()*100).toString())}");
+      // var urlAPI = Uri.parse("$urlAirflow/payment");
+      // final headers = ({
+      //   "Content-Type": "application/json",
+      // });
+      // var responseAPI = await post(urlAPI,
+      //   headers: headers,
+      //   body: json.encode(
+      //       {
+      //           "transaction_type": "SALE",
+      //           "terminal_id": "TESTTERMINAL",
+      //           "card_num": controllerPaymentD.number.text.replaceAll(" ", ""),
+      //           "card_exp_month": controllerPaymentD.date.text.split("/")[0],
+      //           "card_exp_year": controllerPaymentD.date.text.split("/")[1],
+      //           "total_amount": int.parse((total.round()*100).toString())
+      //       },
+      //     ),
+      //   );
+      // if (responseAPI.statusCode == 200) {
+          //Se realiza éxitosamente la pasarela de pagos
           dynamic res;
           Map jsonAPI = {};
           if (sameAsSD) {
@@ -145,7 +171,7 @@ void finalPressed(BuildContext context, CustomerPDSDProvider controllerPesonalD,
             var urlAPI = Uri.parse("$urlAirflow/api/v1/dags/shipping_bundle_order_started_v1/dagRuns");
             final headers = ({
               "Content-Type": "application/json",
-              'Authorization': 'Basic YWlyZmxvdzpjYiF1bmEyMDIz'
+              'Authorization': bearerAirflow
             });
             var responseAPI = await post(urlAPI,
               headers: headers,
@@ -191,17 +217,27 @@ void finalPressed(BuildContext context, CustomerPDSDProvider controllerPesonalD,
               },
             );
           }
-          
-        } catch (error) {
-          print("Error on Final Pressed: '$error'");
-          if(!context.mounted) return;
-          showDialog(
-              barrierColor: const Color(0x00022963).withOpacity(0.40),
-              barrierDismissible: false,
-              context: context,
-              builder: (_) {
-                return const FinalPopupFail();
-              },
-            );
-        }
+        // } else {
+        //   if(!context.mounted) return;
+        //   showDialog(
+        //     barrierColor: const Color(0x00022963).withOpacity(0.40),
+        //     barrierDismissible: false,
+        //     context: context,
+        //     builder: (_) {
+        //       return const FinalPopupNotValidCreditCard();
+        //     },
+        //   );
+        // }
+      } catch (error) {
+        print("Error on Final Pressed: '$error'");
+        if(!context.mounted) return;
+        showDialog(
+            barrierColor: const Color(0x00022963).withOpacity(0.40),
+            barrierDismissible: false,
+            context: context,
+            builder: (_) {
+              return const FinalPopupFail();
+            },
+          );
+    }
   }

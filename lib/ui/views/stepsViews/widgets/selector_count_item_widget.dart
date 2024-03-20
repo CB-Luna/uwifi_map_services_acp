@@ -32,7 +32,7 @@ class SelectorCountItemWidget extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final bool isMobile = size.width < 1024 ? true : false;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10.0),
       child: Container(
         width: MediaQuery.of(context).size.width,
         height: isMobile ? 80.0 : 100.0,
@@ -56,8 +56,8 @@ class SelectorCountItemWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5),
               child: Container(
-                width: isMobile ? 40.0 : 50.0,
-                height: isMobile ? 40.0 : 50.0,
+                width: isMobile ? 55.0 : 80.0,
+                height: isMobile ? 55.0 : 80.0,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: NetworkImage(image),
@@ -67,9 +67,9 @@ class SelectorCountItemWidget extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 5),
               child: SizedBox(
-                width: isMobile ? 140.0 : 200.0,
+                width: isMobile ? 120.0 : 200.0,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
@@ -86,6 +86,8 @@ class SelectorCountItemWidget extends StatelessWidget {
                     ),
                     Text(
                       description,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         color: isRequired ? colorInversePrimary : colorBgBlack,
                         fontSize: isMobile ? 10.0 : 12.0,
@@ -98,13 +100,12 @@ class SelectorCountItemWidget extends StatelessWidget {
                 ),
               ),
             ),
-            isMobile ? 
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5.0),
-                  child: AbsorbPointer(
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AbsorbPointer(
                     absorbing: isRequired,
                     child: CustomizableCounter(
                       minCount: 1,
@@ -123,83 +124,30 @@ class SelectorCountItemWidget extends StatelessWidget {
                       showButtonText: false,
                     ),
                   ),
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                      child: Text(
-                        '\$$subtotal',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          color: isRequired ? colorInversePrimary : colorBgBlack,
-                          fontSize: isMobile ? 12.0 : 16.0,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    Visibility(
-                      visible: !isRequired,
-                      child: InkWell(
-                        onTap: onRemove,
-                        child: Icon(
-                          Icons.delete_outline,
-                          color: isRequired ? colorInversePrimary : colorBgBlack,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            )
-            :
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: AbsorbPointer(
-                    absorbing: isRequired,
-                    child: CustomizableCounter(
-                      minCount: 1,
-                      count: counter.toDouble(),
-                      onIncrement: onIncrementDecrement,
-                      onDecrement: onIncrementDecrement,
-                      incrementIcon: Icon(
-                        Icons.add,
+                  Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                    child: Text(
+                      '\$$subtotal',
+                      style: TextStyle(
                         color: isRequired ? colorInversePrimary : colorBgBlack,
+                        fontSize: isMobile ? 12.0 : 16.0,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w600,
                       ),
-                      decrementIcon: Icon(
-                        Icons.remove,
-                        color: isRequired ? colorInversePrimary : colorBgBlack,
-                      ),
-                      textColor: isRequired ? colorInversePrimary : colorBgBlack,
-                      showButtonText: false,
                     ),
                   ),
+                ],
+              ),
+            ),
+            Visibility(
+              visible: !isRequired,
+              child: InkWell(
+                onTap: onRemove,
+                child: Icon(
+                  Icons.delete_outline,
+                  color: isRequired ? colorInversePrimary : colorBgBlack,
                 ),
-                Text(
-                  '\$$subtotal',
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    color: isRequired ? colorInversePrimary : colorBgBlack,
-                    fontSize: isMobile ? 12.0 : 16.0,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                Visibility(
-                  visible: !isRequired,
-                  child: InkWell(
-                    onTap: onRemove,
-                    child: Icon(
-                      Icons.delete_outline,
-                      color: isRequired ? colorInversePrimary : colorBgBlack,
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
           ],
         ),

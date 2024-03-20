@@ -102,7 +102,7 @@ class CartButtons extends StatelessWidget {
                 child: Text(buttonText,
                     style: GoogleFonts.workSans(
                         height: 1.5,
-                        fontSize: 14,
+                        fontSize: 20,
                         color: textColor,
                         fontWeight: FontWeight.w600,
                         letterSpacing: -0.2)),

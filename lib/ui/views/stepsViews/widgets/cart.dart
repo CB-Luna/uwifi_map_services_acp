@@ -17,11 +17,11 @@ class CartWidget extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final bool isMobile = size.width < 1024 ? true : false;
 
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
+    return Container(
       width: MediaQuery.of(context).size.width * (isMobile ? 0.9 : 0.5),
-      height: MediaQuery.of(context).size.height * 0.45,
+      height: cartController.merchantSelected.isEmpty ? 
+      MediaQuery.of(context).size.height * (isMobile ? 0.23 : 0.261) : 
+      MediaQuery.of(context).size.height * (isMobile ? 0.32 : 0.38),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
           side: const BorderSide(width: 1.5, color: colorBorder),
@@ -33,13 +33,13 @@ class CartWidget extends StatelessWidget {
           final service = cartController.services.first;
           return Column(children: <Widget>[
     
-            SelectorCountItemWidget(
+
+            BottomCartSectionWidget(
               title: service.name, 
               description: service.description, 
               subtotal: "${service.subtotal}", 
               image: service.imageurl, 
               counter: 1,
-              isRequired: true,
               onRemove: () {
                 
               },
@@ -47,6 +47,7 @@ class CartWidget extends StatelessWidget {
                 
               },
             ),
+
             Expanded(
               child: Scrollbar(
                 controller: scrollController,
@@ -82,8 +83,6 @@ class CartWidget extends StatelessWidget {
                 )),
               ),
             ),
-    
-            const BottomCartSectionWidget(),
           ]);
         },
       ),

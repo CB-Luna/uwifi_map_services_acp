@@ -13,15 +13,11 @@ class CartWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartController = Provider.of<Cart>(context);
-    final scrollController =  ScrollController();
     final size = MediaQuery.of(context).size;
     final bool isMobile = size.width < 1024 ? true : false;
 
     return Container(
       width: MediaQuery.of(context).size.width * (isMobile ? 0.9 : 0.5),
-      height: cartController.merchantSelected.isEmpty ? 
-      MediaQuery.of(context).size.height * (isMobile ? 0.23 : 0.261) : 
-      MediaQuery.of(context).size.height * (isMobile ? 0.32 : 0.38),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
           side: const BorderSide(width: 1.5, color: colorBorder),
@@ -48,40 +44,38 @@ class CartWidget extends StatelessWidget {
               },
             ),
 
-            Expanded(
-              child: Scrollbar(
-                controller: scrollController,
-                thumbVisibility: true,
-                child: SingleChildScrollView(
-                controller: scrollController,
-                child: Column(
-                  children: <Widget>[
-                                    
-                    ColumnBuilder(
-                      itemCount: cartController.merchantSelected.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        final merchant = cartController.merchantSelected[index];
-                
-                        return SelectorCountItemWidget(
-                          isRequired: false,
-                          title: merchant.name, 
-                          description: merchant.description, 
-                          subtotal: "${merchant.subtotal}", 
-                          image: merchant.imageurl, 
-                          counter: merchant.quantity,
-                          onRemove: () {
-                            cartController.removeFromCart(merchant.id);
-                          },
-                          onIncrementDecrement: (counter) {
-                            cartController.incrementDecrementQuantityCart(merchant.id, counter.toInt());
-                          },
-                        );
-                      },
-                    ),
-                                    
-                  ],
-                )),
-              ),
+            SizedBox(
+              height: cartController.merchantSelected.isNotEmpty ? 
+              MediaQuery.of(context).size.height * 0.15 : 0.0,
+              child: SingleChildScrollView(
+              controller: ScrollController(),
+              child: Column(
+                children: <Widget>[
+                                  
+                  ColumnBuilder(
+                    itemCount: cartController.merchantSelected.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final merchant = cartController.merchantSelected[index];
+              
+                      return SelectorCountItemWidget(
+                        isRequired: false,
+                        title: merchant.name, 
+                        description: merchant.description, 
+                        subtotal: "${merchant.subtotal}", 
+                        image: merchant.imageurl, 
+                        counter: merchant.quantity,
+                        onRemove: () {
+                          cartController.removeFromCart(merchant.id);
+                        },
+                        onIncrementDecrement: (counter) {
+                          cartController.incrementDecrementQuantityCart(merchant.id, counter.toInt());
+                        },
+                      );
+                    },
+                  ),
+                                  
+                ],
+              )),
             ),
           ]);
         },

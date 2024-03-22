@@ -35,7 +35,7 @@ class SelectorCountItemWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10.0),
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: isMobile ? 80.0 : 100.0,
+        height: 100.0,
         decoration: ShapeDecoration(
           color: isRequired ? colorPrimary : colorBgWhite,
           shape: RoundedRectangleBorder(
@@ -66,38 +66,36 @@ class SelectorCountItemWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: SizedBox(
-                width: isMobile ? 120.0 : 200.0,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      title,
-                      style: TextStyle(
-                        color: isRequired ? colorInversePrimary : colorBgBlack,
-                        fontSize: isMobile ? 12.0 : 20.0,
-                        fontFamily: 'Quicksand',
-                        fontWeight: FontWeight.w700,
-                      ),
-                      textAlign: TextAlign.center,
+            SizedBox(
+              width: isMobile ? 90.0 : 200.0,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    title,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: isRequired ? colorInversePrimary : colorBgBlack,
+                      fontSize: isMobile ? 12.0 : 20.0,
+                      fontFamily: 'Quicksand',
+                      fontWeight: FontWeight.w700,
                     ),
-                    Text(
-                      description,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        color: isRequired ? colorInversePrimary : colorBgBlack,
-                        fontSize: isMobile ? 10.0 : 12.0,
-                        fontFamily: 'Quicksand',
-                        fontWeight: FontWeight.w500,
-                      ),
-                      textAlign: TextAlign.center,
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    description,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: isRequired ? colorInversePrimary : colorBgBlack,
+                      fontSize: isMobile ? 10.0 : 12.0,
+                      fontFamily: 'Quicksand',
+                      fontWeight: FontWeight.w500,
                     ),
-                  ],
-                ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
             ),
             Padding(

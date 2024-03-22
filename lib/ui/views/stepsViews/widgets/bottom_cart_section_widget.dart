@@ -36,7 +36,6 @@ class BottomCartSectionWidget extends StatelessWidget {
       padding: const EdgeInsetsDirectional.symmetric(horizontal: 15.0, vertical: 10.0),
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: isMobile ? 220.0 : 270.0,
         decoration: ShapeDecoration(
           gradient: const LinearGradient(
             begin: Alignment(-1.00, -0.04),
@@ -70,9 +69,9 @@ class BottomCartSectionWidget extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    padding: const EdgeInsets.symmetric(horizontal: 3),
                     child: SizedBox(
-                      width: isMobile ? 120.0 : 200.0,
+                      width: isMobile ? 100.0 : 200.0,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
@@ -111,6 +110,7 @@ class BottomCartSectionWidget extends StatelessWidget {
                         AbsorbPointer(
                           absorbing: true,
                           child: CustomizableCounter(
+                            borderColor: Colors.transparent,
                             minCount: 1,
                             count: counter.toDouble(),
                             onIncrement: onIncrementDecrement,
@@ -235,7 +235,6 @@ class BottomCartSectionWidget extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: SizedBox(
                 width: MediaQuery.of(context).size.width,
-                height: 130,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -298,6 +297,7 @@ class BottomCartSectionWidget extends StatelessWidget {
                               AbsorbPointer(
                                 absorbing: true,
                                 child: CustomizableCounter(
+                                  borderColor: Colors.transparent,
                                   minCount: 1,
                                   count: counter.toDouble(),
                                   onIncrement: onIncrementDecrement,
@@ -421,7 +421,7 @@ class BottomCartSectionWidget extends StatelessWidget {
                             width: 10,
                           ),
                         SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.14,
+                            width: MediaQuery.of(context).size.width * 0.12,
                             height: 30,
                             child: const CustomOutlinedButton(
                               text: "Apply Coupon",
@@ -432,7 +432,7 @@ class BottomCartSectionWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: SizedBox (
-                          width: MediaQuery.of(context).size.width * 0.15,
+                          width: MediaQuery.of(context).size.width * 0.2,
                           height: 50,
                           child: styledButton(context),
                         ),
